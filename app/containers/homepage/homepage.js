@@ -3,15 +3,14 @@ import {
     observer
 } from 'globalImports';
 
-class HomePage extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+import navStore from '../../stores/navStore';
 
+@observer
+class HomePage extends React.Component {
   render() {
     return (<div className="homepage-container">
       <h1>homepage</h1>
+      <p>{navStore.page}</p>
     </div>);
   }
 }
