@@ -31,7 +31,8 @@ class HomePage extends React.Component {
           <Paper className="homepage-paper">
             <Typography type="headline" component="h3">Actions</Typography>
             <Button
-              color="inherit"
+              raised
+              color="primary"
               onClick={() => {
                 logStore.addEntry('Good for you, you did something!');
               }}
