@@ -170,8 +170,8 @@ class ExplorePage extends React.Component {
     const canvas = ReactDOM.findDOMNode(this).querySelector('.explorepage-map');
     const context = canvas.getContext('2d');
 
-    this.drawRoads(context);
     this.drawRivers(context);
+    this.drawRoads(context);
   }
   drawRoads(context) {
     drawBezierCurveThrough(context, [
