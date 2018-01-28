@@ -24,7 +24,7 @@ class Store {
     this.inventory.delete(key);
   };
 
-  @computed inventoryItems() {
+  @computed get inventoryItems() {
     return toJS(this.inventory);
   };
 }

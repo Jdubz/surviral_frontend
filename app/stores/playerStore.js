@@ -7,12 +7,11 @@ import {
 } from 'globalImports';
 
 class Store {
-  @observable hunger = 0;
+  @observable hunger = 10;
   @observable health = 10;
   @observable food = 0;
   @observable medicine = 0;
   @observable inventory = new Map();
-
 
   @action modHunger = (newHunger) => {
     this.hunger = newHunger;
@@ -33,7 +32,7 @@ class Store {
     this.inventory.delete(key);
   };
 
-  @computed inventoryItems() {
+  @computed get inventoryItems() {
     return toJS(this.inventory);
   };
 }

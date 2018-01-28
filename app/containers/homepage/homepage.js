@@ -6,8 +6,7 @@ import {
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import { LinearProgress } from 'material-ui/Progress';
-import { navStore } from '../../stores';
+import PLayerInfo from '../playerInfo/playerInfo';
 
 @observer
 class HomePage extends React.Component {
@@ -24,16 +23,7 @@ class HomePage extends React.Component {
             <Typography type="headline" component="h3">Actions</Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12}>
-          <Paper className="homepage-paper">
-            <Typography type="headline" component="h3">Needs</Typography>
-            <Typography type="headline" component="h4">Hunger</Typography>
-            <LinearProgress mode="determinate" value={50} />
-            <br />
-            <Typography type="headline" component="h4">Home</Typography>
-            <LinearProgress mode="determinate" value={100} />
-          </Paper>
-        </Grid>
+        <PLayerInfo />
       </Grid>
     </div>);
   }
