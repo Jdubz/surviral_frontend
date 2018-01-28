@@ -40,5 +40,9 @@
     "effects": "health += 1",
     "logs": "That's the way my mom used to patch me up.",
     "destroy": "TRUE"
+  },
+  {
+    "name": "Explore",
+    "effects": "navigate explore"
   }
 ]

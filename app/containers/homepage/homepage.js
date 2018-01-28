@@ -9,7 +9,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import PLayerInfo from '../playerInfo/playerInfo';
 import Log from '../log/log';
-import { logStore, locationStore, actionStore } from '../../stores';
+import { navStore, logStore, locationStore, actionStore } from '../../stores';
 
 @observer
 class HomePage extends React.Component {
@@ -30,13 +30,20 @@ class HomePage extends React.Component {
         <Grid item xs={12} sm={6}>
           <Paper className="homepage-paper">
             <Typography type="headline" component="h3">Actions</Typography>
-            {Object.keys(actionStore.currentActions).map((actionName) => {
+            {Object.keys(actionStore.currentActions).map((actionName, index) => {
                 return (
                   <Button
+                     key={index}
                      raised
                      color="primary"
                      onClick={() => {
-                         logStore.addEntry(actionStore.currentActions[actionName].logs);
+                         const effect = actionStore.currentActions[actionName].effects;
+
+                         if (effect.indexOf('navigate') === 0) {
+                           navStore.changePage(effect.slice(9));
+                         } else {
+                           logStore.addEntry(actionStore.currentActions[actionName].logs);
+                         }
                      }}>
                     {actionName}
                   </Button>)
