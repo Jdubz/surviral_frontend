@@ -31,23 +31,21 @@ class HomePage extends React.Component {
           <Paper className="homepage-paper">
             <Typography type="headline" component="h3">Actions</Typography>
             {Object.keys(actionStore.currentActions).map((actionName, index) => {
-                return (
-                  <Button
-                     key={index}
-                     raised
-                     color="primary"
-                     key={actionName}
-                     onClick={() => {
-                         const effect = actionStore.currentActions[actionName].effects;
-
-                         if (effect.indexOf('navigate') === 0) {
-                           navStore.changePage(effect.slice(9));
-                         } else {
-                           logStore.addEntry(actionStore.currentActions[actionName].logs);
-                         }
-                     }}>
-                    {actionName}
-                  </Button>)
+              return (
+                <Button
+                  raised
+                  color="primary"
+                  key={actionName}
+                  onClick={() => {
+                    const effect = actionStore.currentActions[actionName].effects;
+                    if (effect.indexOf('navigate') === 0) {
+                      navStore.changePage(effect.slice(9));
+                    } else {
+                      logStore.addEntry(actionStore.currentActions[actionName].logs);
+                    }
+                  }}>
+                  {actionName}
+                </Button>)
             })}
           </Paper>
         </Grid>
