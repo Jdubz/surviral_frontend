@@ -36,6 +36,7 @@ class HomePage extends React.Component {
                      key={index}
                      raised
                      color="primary"
+                     key={actionName}
                      onClick={() => {
                          const effect = actionStore.currentActions[actionName].effects;
 

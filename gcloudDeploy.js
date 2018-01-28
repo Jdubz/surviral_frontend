@@ -1,8 +1,6 @@
 const Storage = require('@google-cloud/storage');
 const fs = require('fs');
-const projectId = '';
-const bucketNames = [''];
-const keyFilename = 'auth/';
+const { bucketNames, projectId, keyFilename } = require('./auth/deploySettings');
 
 const buckets = [];
 bucketNames.forEach((bucketName) => {
