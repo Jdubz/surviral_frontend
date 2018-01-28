@@ -8,8 +8,7 @@ import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import { navStore, logStore, actionStore } from '../../stores';
-import actionManager from '../../services/actionManager';
-
+import eventLoop from '../../services/eventLoop'
 
 @observer
 class ActionPanel extends React.Component{
@@ -18,21 +17,22 @@ class ActionPanel extends React.Component{
       <Grid item xs={12} sm={6}>
         <Paper className="homepage-paper">
           <Typography type="headline" component="h3">Actions</Typography>
-          {actionManager.getValidActions().map((action) => {
+          {Object.keys(actionStore.currentActions).map((actionName) => {
             return (
               <Button
                 raised
                 color="primary"
-                key={action.name}
+                key={actionName}
                 onClick={() => {
-                  const effect = actionStore.currentActions[action.name].effects;
-                  if (effect.indexOf('navigate') === 0) {
-                    navStore.changePage(effect.slice(9));
+                  const action = actionStore.currentActions[actionName];
+                  if (action.type === "explore") {
+                    navStore.changePage("explore");
                   } else {
-                    logStore.addEntry(actionStore.currentActions[action.name].logs);
+                    logStore.addEntry(action.logs);
+                    eventLoop.triggerLoop(action);
                   }
                 }}>
-                {action.name}
+                {actionName}
               </Button>)
           })}
         </Paper>
