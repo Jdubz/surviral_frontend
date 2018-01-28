@@ -10,10 +10,12 @@ import { playerStore, locationStore, actionStore } from '../stores';
 import actions from 'assets/json/actions.json';
 import items from 'assets/json/items.json';
 
-console.log(actions);
+var parseMapFromString = (inStr) => {
+    if (inStr === "" || inStr === null || inStr === undefined) {
+        return inStr;
+    }
 
-var parseMapFromString = (instr) => {
-    let splitString = instr.split(",");
+    let splitString = inStr.split(",");
     let map = {};
     splitString.forEach((keyValue) => {
         let [key, value] = keyValue.split(":");
@@ -23,13 +25,9 @@ var parseMapFromString = (instr) => {
     return map;
 };
 
-var findActionPrereqs = (action) => {
-    if (action.prereq === "" || action.prereq === null || action.prereq === undefined) {
-        return action;
-    }
-    console.log(action.prereq)
+var parseAction = (action) => {
     action.prereq = parseMapFromString(action.prereq);
-    //console.log('action', action);
+    action.player_effects = parseMapFromString(action.player_effects);
     return action;
 };
 
@@ -46,7 +44,7 @@ var validateAction = (action) => {
     return valid;
 };
 
-let _actions = actions.map(findActionPrereqs);
+let _actions = actions.map(parseAction);
 
 module.exports.getValidActions = () => {
     return _actions.filter(validateAction);

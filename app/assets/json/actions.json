@@ -1,58 +1,74 @@
 [
   {
+    "id": 1,
     "name": "Eat Food",
     "prereq": "food:1",
-    "effects": "hunger += 2",
+    "player_effects": "hunger:2",
+    "time": 0,
     "logs": "You eat the food. MMM donuts...",
-    "destroy": "TRUE"
+    "type": "consume"
   },
   {
+    "id": 2,
     "name": "Drink Water",
     "prereq": "water:1",
-    "effects": "hunger += 1",
+    "player_effects": "hunger:1",
+    "time": 0,
     "logs": "Glug glug glug.",
-    "destroy": "TRUE"
+    "type": "consume"
   },
   {
+    "id": 2,
     "name": "Take Painkillers",
     "prereq": "ibuprofen:1",
-    "effects": "hunger += 1",
+    "player_effects": "hunger:1",
+    "time": 0,
     "logs": "That's the stuff.",
-    "destroy": "TRUE"
+    "type": "consume"
   },
   {
+    "id": 3,
     "name": "Drink Coffee",
     "prereq": "cofee:1",
-    "effects": "health += 1",
+    "player_effects": "health:1",
+    "time": 0,
     "logs": "Oh how I love Venti double shot carmel non fat non gmo organic lattes...",
-    "destroy": "TRUE"
+    "type": "consume"
   },
   {
-    "name": "Take Cocaine",
-    "prereq": "cocaine:1",
-    "effects": "hunger -= 2\nhealth += 2",
+    "id": 4,
+    "name": "Take Upper",
+    "prereq": "upper:1",
+    "player_effects": "hunger:2,health:-2",
+    "time": 0,
     "logs": "Your teeth are numb.",
-    "destroy": "TRUE"
+    "type": "consume"
   },
   {
+    "id": 5,
     "name": "Apply Bandage",
     "prereq": "bandage:1",
-    "effects": "health += 1",
+    "player_effects": "health:1",
+    "time": 0,
     "logs": "That's the way my mom used to patch me up.",
-    "destroy": "TRUE"
+    "type": "consume"
   },
   {
+    "id": 6,
     "name": "Explore",
     "prereq": "",
-    "effects": "nav explore",
+    "player_effects": "",
+    "time": 0,
     "logs": "",
-    "destroy": ""
+    "type": "explore"
   },
   {
+    "id": 7,
     "name": "Map",
     "prereq": "map:1",
-    "effects": "",
-    "logs": "",
-    "destroy": ""
+    "player_effects": "",
+    "time": 0,
+    "logs": "There's a safe haven to the North.",
+    "type": "use"
   }
 ]
