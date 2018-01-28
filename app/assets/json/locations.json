@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0,
+    "name": "Supermarket",
+    "items": "food:1,water:1"
+  },
+  {
+    "id": 1,
+    "name": "Drug Store",
+    "items": "ibuprofen:1,bandage:1"
+  },
+  {
+    "id": 2,
+    "name": "A Cramped Hovel",
+    "items": ""
+  }
+]

@@ -6,6 +6,29 @@ import {
   computed,
 } from 'globalImports';
 
+import locations from 'assets/json/locations.json'
+
+var calculateItemsRatio = (location) => {
+    let splitItems = location.items.split(",");
+    let items = {};
+    let totalCount = 0;
+    splitItems.forEach((item) => {
+        let [name, count] = item.split(":");
+        count = parseInt(count);
+        items[name] = count;
+        totalCount += count;
+    });
+
+    Object.keys(items).map((name) => {
+        items[name] = items[name] / totalCount;
+    });
+
+    location.items = items;
+};
+
+// this contains the ratio of items with their ids
+const _locations = locations.map(calculateItemsRatio);
+
 class Store {
   @observable description = 'There is nothing interesting here';
   @observable food = 0;
