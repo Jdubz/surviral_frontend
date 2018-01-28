@@ -1,6 +1,47 @@
 .explorepage-map-container {
+  position: relative;
+
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 100%;
+  }
+}
+
+.explorepage-map-inner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   border-radius: 50%;
-  height: 80%;
-  width: 80%;
   border: 10px solid grey;
+  overflow: scroll;
+}
+
+.explorepage-map {
+  background-color: white;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+}
+
+.explorepage-map-location-container {
+  position: relative;
+  z-index: 1;
+}
+
+.explorepage-map-location {
+  fill: grey;
+  height: 200px;
+  width: 200px;
+
+  &.is-active {
+    fill: #3ec9c9;
+  }
+
+  &:hover {
+    fill: #35a5a5;
+  }
 }

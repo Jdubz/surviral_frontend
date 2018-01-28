@@ -33,6 +33,7 @@ var calculateItemsRatio = (location) => {
 const _locations = locations.map(calculateItemsRatio);
 
 class Store {
+  @observable id = 12345
   @observable description = 'There is nothing interesting here';
   @observable food = 0;
   @observable medicine = 0;
