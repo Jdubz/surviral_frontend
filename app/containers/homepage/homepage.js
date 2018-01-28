@@ -9,7 +9,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import PLayerInfo from '../playerInfo/playerInfo';
 import Log from '../log/log';
-import { logStore, locationStore } from '../../stores';
+import { logStore, locationStore, actionStore } from '../../stores';
 
 @observer
 class HomePage extends React.Component {
@@ -30,15 +30,17 @@ class HomePage extends React.Component {
         <Grid item xs={12} sm={6}>
           <Paper className="homepage-paper">
             <Typography type="headline" component="h3">Actions</Typography>
-            <Button
-              raised
-              color="primary"
-              onClick={() => {
-                logStore.addEntry('Good for you, you did something!');
-              }}
-            >
-              Do Something
-            </Button>
+            {Object.keys(actionStore.currentActions).map((actionName) => {
+                return (
+                  <Button
+                     raised
+                     color="primary"
+                     onClick={() => {
+                         logStore.addEntry(actionStore.currentActions[actionName].logs);
+                     }}>
+                    {actionName}
+                  </Button>)
+            })}
           </Paper>
         </Grid>
         <PLayerInfo />

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Eat Food",
+    "prereq": "1 food",
+    "effects": "hunger += 2",
+    "logs": "You eat the food. MMM donuts...",
+    "destroy": "TRUE"
+  },
+  {
+    "name": "Drink Water",
+    "prereq": "1 water",
+    "effects": "hunger += 1",
+    "logs": "Glug glug glug.",
+    "destroy": "TRUE"
+  },
+  {
+    "name": "Take Painkillers",
+    "prereq": "1 ibuprofen",
+    "effects": "hunger += 1",
+    "logs": "That's the stuff.",
+    "destroy": "TRUE"
+  },
+  {
+    "name": "Drink Coffee",
+    "prereq": "1 coffee",
+    "effects": "health += 1",
+    "logs": "Oh how I love Venti double shot carmel non fat non gmo organic lattes...",
+    "destroy": "TRUE"
+  },
+  {
+    "name": "Take Cocaine",
+    "prereq": "1 cocaine",
+    "effects": "hunger -= 2\nhealth += 2",
+    "logs": "Your teeth are numb.",
+    "destroy": "TRUE"
+  },
+  {
+    "name": "Apply Bandage",
+    "prereq": "1 bandage",
+    "effects": "health += 1",
+    "logs": "That's the way my mom used to patch me up.",
+    "destroy": "TRUE"
+  }
+]
