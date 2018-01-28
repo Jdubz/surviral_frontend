@@ -15,33 +15,32 @@
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 50%;
+  // border-radius: 50%;
   border: 10px solid grey;
   overflow: scroll;
 }
 
 .explorepage-map {
-  background-color: white;
+  background-color: #C9AD99;
   position: absolute;
   top: 0;
   z-index: 0;
 }
 
-.explorepage-map-location-container {
-  position: relative;
+.explorepage-map-svg-container {
+  position: absolute;
   z-index: 1;
 }
 
 .explorepage-map-location {
   fill: grey;
-  height: 200px;
-  width: 200px;
+  cursor: pointer;
 
   &.is-active {
-    fill: #3ec9c9;
+    fill: #F06E42;
   }
 
   &:hover {
-    fill: #35a5a5;
+    fill: #F08762;
   }
 }
