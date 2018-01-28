@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "name": "food",
+    "description": ""
+  },
+  {
+    "id": 1,
+    "name": "water",
+    "description": ""
+  },
+  {
+    "id": 2,
+    "name": "ibuprofen",
+    "description": ""
+  },
+  {
+    "id": 3,
+    "name": "coffee",
+    "description": ""
+  },
+  {
+    "id": 4,
+    "name": "cocaine",
+    "description": ""
+  },
+  {
+    "id": 5,
+    "name": "bandage",
+    "description": ""
+  },
+  {
+    "id": 6,
+    "name": "map",
+    "description": ""
+  }
+]

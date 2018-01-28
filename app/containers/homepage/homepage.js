@@ -10,6 +10,7 @@ import Button from 'material-ui/Button';
 import PLayerInfo from '../playerInfo/playerInfo';
 import Log from '../log/log';
 import { navStore, logStore, locationStore, actionStore } from '../../stores';
+import actionManager from '../../services/actionManager';
 
 @observer
 class HomePage extends React.Component {
@@ -30,21 +31,21 @@ class HomePage extends React.Component {
         <Grid item xs={12} sm={6}>
           <Paper className="homepage-paper">
             <Typography type="headline" component="h3">Actions</Typography>
-            {Object.keys(actionStore.currentActions).map((actionName, index) => {
+            {actionManager.getValidActions().map((action) => {
               return (
                 <Button
                   raised
                   color="primary"
-                  key={actionName}
+                  key={action.name}
                   onClick={() => {
-                    const effect = actionStore.currentActions[actionName].effects;
+                    const effect = actionStore.currentActions[action.name].effects;
                     if (effect.indexOf('navigate') === 0) {
                       navStore.changePage(effect.slice(9));
                     } else {
-                      logStore.addEntry(actionStore.currentActions[actionName].logs);
+                      logStore.addEntry(actionStore.currentActions[action.name].logs);
                     }
                   }}>
-                  {actionName}
+                  {action.name}
                 </Button>)
             })}
           </Paper>

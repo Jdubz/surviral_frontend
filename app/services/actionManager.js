@@ -8,6 +8,7 @@ import {
 
 import { playerStore, locationStore, actionStore } from '../stores';
 import actions from 'assets/json/actions.json';
+import items from 'assets/json/items.json';
 
 console.log(actions);
 
@@ -24,14 +25,29 @@ var parseMapFromString = (instr) => {
 
 var findActionPrereqs = (action) => {
     if (action.prereq === "" || action.prereq === null || action.prereq === undefined) {
-        return;
+        return action;
     }
-    console.log(action.prereq);
+    console.log(action.prereq)
     action.prereq = parseMapFromString(action.prereq);
+    //console.log('action', action);
+    return action;
 };
 
-module.exports.addValidActions = () => {
-    console.log(playerStore.inventoryItems);
-    console.log(locationStore.inventoryItems);
-    console.log(actions.map(findActionPrereqs));
-}
+var validateAction = (action) => {
+    let prereqs = action.prereq;
+    let valid = true;
+    Object.keys(prereqs).forEach((prereq) => {
+        let prereqInPlayerInventory = playerStore.inventoryItems.hasOwnProperty(prereq);
+        let prereqInLocationInventory = locationStore.inventoryItems.hasOwnProperty(prereq);
+        if (!prereqInLocationInventory && !prereqInPlayerInventory) {
+            valid = false;
+        }
+    });
+    return valid;
+};
+
+let _actions = actions.map(findActionPrereqs);
+
+module.exports.getValidActions = () => {
+    return _actions.filter(validateAction);
+};

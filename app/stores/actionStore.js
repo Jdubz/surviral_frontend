@@ -6,8 +6,6 @@ import {
     computed,
 } from 'globalImports';
 
-import actions from 'assets/json/actions.json'
-
 class Store {
     @observable actions = new Map();
 
@@ -17,9 +15,9 @@ class Store {
     @action removeFromActions = () => {
         this.actions.delete(action);
     };
-    @action addActions = () => {
-        actions.forEach((action) => this.addToActions(action));
-    };
+    //@action addActions = () => {
+    //    actions.forEach((action) => this.addToActions(action));
+    //};
 
     @computed get currentActions() {
         return toJS(this.actions);
@@ -27,6 +25,5 @@ class Store {
 }
 
 let actionStore = new Store();
-actionStore.addActions();
 
 module.exports = actionStore;
