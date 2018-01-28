@@ -13,7 +13,7 @@ class Log extends React.Component {
     return (<div className="log-container">
       {logStore.entries.reverse().map((entry, index) => {
         return (
-          <p key={index}>{entry}</p>
+          <Typography paragraph key={index}>{entry}</Typography>
         );
       })}
     </div>);
