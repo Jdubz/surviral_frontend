@@ -6,10 +6,9 @@ import {
     computed,
 } from 'globalImports';
 
-import actions from 'resources/json/actions.json'
+import actions from 'assets/json/actions.json'
 
 class Store {
-    @observable description = 'There is nothing interesting here';
     @observable actions = new Map();
 
     @action addToActions = (action) => {
