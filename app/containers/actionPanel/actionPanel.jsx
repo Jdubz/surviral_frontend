@@ -9,6 +9,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import { navStore, logStore, actionStore } from '../../stores';
 import eventLoop from '../../services/eventLoop'
+import actionManager from '../../services/actionManager';
 
 @observer
 class ActionPanel extends React.Component{

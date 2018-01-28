@@ -7,6 +7,8 @@ import {
 } from 'globalImports';
 
 class Store {
+  @observable hungerMod = -1;
+  @observable healthMod = -1;
   @observable hunger = 10;
   @observable health = 10;
   @observable food = 0;
