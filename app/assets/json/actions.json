@@ -1,48 +1,58 @@
 [
   {
     "name": "Eat Food",
-    "prereq": "1 food",
+    "prereq": "food:1",
     "effects": "hunger += 2",
     "logs": "You eat the food. MMM donuts...",
     "destroy": "TRUE"
   },
   {
     "name": "Drink Water",
-    "prereq": "1 water",
+    "prereq": "water:1",
     "effects": "hunger += 1",
     "logs": "Glug glug glug.",
     "destroy": "TRUE"
   },
   {
     "name": "Take Painkillers",
-    "prereq": "1 ibuprofen",
+    "prereq": "ibuprofen:1",
     "effects": "hunger += 1",
     "logs": "That's the stuff.",
     "destroy": "TRUE"
   },
   {
     "name": "Drink Coffee",
-    "prereq": "1 coffee",
+    "prereq": "cofee:1",
     "effects": "health += 1",
     "logs": "Oh how I love Venti double shot carmel non fat non gmo organic lattes...",
     "destroy": "TRUE"
   },
   {
     "name": "Take Cocaine",
-    "prereq": "1 cocaine",
+    "prereq": "cocaine:1",
     "effects": "hunger -= 2\nhealth += 2",
     "logs": "Your teeth are numb.",
     "destroy": "TRUE"
   },
   {
     "name": "Apply Bandage",
-    "prereq": "1 bandage",
+    "prereq": "bandage:1",
     "effects": "health += 1",
     "logs": "That's the way my mom used to patch me up.",
     "destroy": "TRUE"
   },
   {
     "name": "Explore",
-    "effects": "navigate explore"
+    "prereq": "",
+    "effects": "nav explore",
+    "logs": "",
+    "destroy": ""
+  },
+  {
+    "name": "Map",
+    "prereq": "map:1",
+    "effects": "",
+    "logs": "",
+    "destroy": ""
   }
 ]

@@ -9,6 +9,9 @@ import {
 import locations from 'assets/json/locations.json'
 
 var calculateItemsRatio = (location) => {
+    if (location.items === "" || location.items === null) {
+        return;
+    }
     let splitItems = location.items.split(",");
     let items = {};
     let totalCount = 0;
