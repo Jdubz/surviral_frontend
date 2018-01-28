@@ -29,6 +29,109 @@ const locations = [
   }
 ];
 
+// from: https://github.com/dobarkod/canvas-bezier-multiple
+function bezierCurveThrough(ctx, points, tension) {
+    // Default tension of one-quarter gives nice results
+    tension = tension || 0.25;
+
+    var l = points.length;
+
+    // If we're given less than two points, there's nothing we can do
+    if (l < 2) return;
+
+    ctx.beginPath();
+
+    // If we only have two points, we can only draw a straight line
+    if (l == 2) {
+        ctx.moveTo(points[0][0], points[0][1]);
+        ctx.lineTo(points[1][0], points[1][1]);
+        ctx.stroke();
+        return;
+    }
+
+    // Helper function to calculate the hypotenuse
+    function h(x, y) {
+        return Math.sqrt(x * x + y * y);
+    }
+
+    /* For each interior point, we need to calculate the tangent and pick
+     * two points on it that'll serve as control points for curves to and
+     * from the point. */
+    var cpoints = [];
+    points.forEach(function() {
+        cpoints.push({});
+    });
+
+    for (var i = 1; i < l - 1; i++) {
+        var pi = points[i],     // current point
+            pp = points[i - 1], // previous point
+            pn = points[i + 1]; // next point;
+
+        /* First, we calculate the normalized tangent slope vector (dx,dy).
+         * We intentionally don't work with the derivative so we don't have
+         * to handle the vertical line edge cases separately. */
+
+        var rdx = pn[0] - pp[0],  // actual delta-x between previous and next points
+            rdy = pn[1] - pp[1],  // actual delta-y between previous and next points
+            rd = h(rdx, rdy),     // actual distance between previous and next points
+            dx = rdx / rd,        // normalized delta-x (so the total distance is 1)
+            dy = rdy / rd;        // normalized delta-y (so the total distance is 1)
+
+        /* Next we calculate distances to previous and next points, so we
+         * know how far out to put the control points on the tangents (tension).
+         */
+
+        var dp = h(pi[0] - pp[0], pi[1] - pp[1]), // distance to previous point
+            dn = h(pi[0] - pn[0], pi[1] - pn[1]); // distance to next point
+
+        /* Now we can calculate control points. Previous control point is
+         * located on the tangent of the curve, with the distance between it
+         * and the current point being a fraction of the distance between the
+         * current point and the previous point. Analogous to next point. */
+
+        var cpx = pi[0] - dx * dp * tension,
+            cpy = pi[1] - dy * dp * tension,
+            cnx = pi[0] + dx * dn * tension,
+            cny = pi[1] + dy * dn * tension;
+
+        cpoints[i] = {
+            cp: [cpx, cpy], // previous control point
+            cn: [cnx, cny], // next control point
+       };
+    }
+
+    /* For the end points, we only need to calculate one control point.
+     * Picking a point in the middle between the endpoint and the other's
+     * control point seems to work well. */
+
+    cpoints[0] = {
+        cn: [ (points[0][0] + cpoints[1].cp[0]) / 2, (points[0][1] + cpoints[1].cp[1]) / 2 ],
+    };
+    cpoints[l - 1] = {
+        cp: [ (points[l - 1][0] + cpoints[l - 2].cn[0]) / 2, (points[l - 1][1] + cpoints[l - 2].cn[1]) / 2 ],
+    };
+
+    /* Now we can draw! */
+
+    ctx.moveTo(points[0][0], points[0][1]);
+
+    for (i = 1; i < l; i++) {
+        var p = points[i],
+            cp = cpoints[i],
+            cpp = cpoints[i - 1];
+
+        /* Each bezier curve uses the "next control point" of first point
+         * point, and "previous control point" of second point. */
+        ctx.bezierCurveTo(cpp.cn[0], cpp.cn[1], cp.cp[0], cp.cp[1], p[0], p[1]);
+    }
+
+    // Overriding stroke produced
+    ctx.lineWidth = 8;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = "#ccc";
+    ctx.stroke();
+};
+
 @observer
 class ExplorePage extends React.Component {
   constructor(props) {
@@ -41,9 +144,14 @@ class ExplorePage extends React.Component {
     };
   }
   componentDidMount() {
-    const canvas = ReactDOM.findDOMNode(this).querySelector('.explorepage-map-inner-container');
+    const canvas = ReactDOM.findDOMNode(this).querySelector('.explorepage-map');
+    const context = canvas.getContext('2d');
 
-
+    bezierCurveThrough(context, [
+      [0,0],
+      [400,400],
+      [500,600]
+    ], 1);
   }
   render() {
     return (<div className="explorepage-container">
@@ -52,7 +160,9 @@ class ExplorePage extends React.Component {
           <div className="explorepage-map-inner-container">
             {locations.map((location, index) => {
               return (
-                <div key={index}>
+                <div
+                  key={index}
+                  className="explorepage-map-location-container">
                   {this[`render${location.type}`](location)}
                 </div>
               );
@@ -97,7 +207,7 @@ class ExplorePage extends React.Component {
     const isActive = location.id === locationStore.id;
 
     return (
-      <svg className={"explorepage-map-location" + (isActive ? ' is-active' : '')} style={style} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131.32 77.86"><title>Map</title><polygon class="cls-1" points="60.36 18.18 47.17 56.16 73.55 56.16 60.36 18.18"/><polygon class="cls-1" points="47.17 28.67 38.94 52.38 55.4 52.38 47.17 28.67"/><polygon class="cls-1" points="30.71 32.45 22.48 56.16 38.94 56.16 30.71 32.45"/><polygon class="cls-1" points="19.4 30.13 14.52 44.21 24.29 44.21 19.4 30.13"/><polygon class="cls-1" points="10.38 37.17 5.5 51.24 15.27 51.24 10.38 37.17"/><polygon class="cls-1" points="116.06 33.94 111.17 48.01 120.94 48.01 116.06 33.94"/><polygon class="cls-1" points="81.78 21.55 73.55 45.26 90.01 45.26 81.78 21.55"/><polygon class="cls-1" points="101.04 14.47 90.9 53.4 111.17 53.4 101.04 14.47"/></svg>
+      <svg className={"explorepage-map-location" + (isActive ? ' is-active' : '')} style={style} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131.32 77.86"><title>Map</title><polygon points="60.36 18.18 47.17 56.16 73.55 56.16 60.36 18.18"/><polygon points="47.17 28.67 38.94 52.38 55.4 52.38 47.17 28.67"/><polygon points="30.71 32.45 22.48 56.16 38.94 56.16 30.71 32.45"/><polygon points="19.4 30.13 14.52 44.21 24.29 44.21 19.4 30.13"/><polygon points="10.38 37.17 5.5 51.24 15.27 51.24 10.38 37.17"/><polygon points="116.06 33.94 111.17 48.01 120.94 48.01 116.06 33.94"/><polygon points="81.78 21.55 73.55 45.26 90.01 45.26 81.78 21.55"/><polygon points="101.04 14.47 90.9 53.4 111.17 53.4 101.04 14.47"/></svg>
     );
   }
 }

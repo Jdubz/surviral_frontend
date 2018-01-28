@@ -22,6 +22,14 @@
 
 .explorepage-map {
   background-color: white;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+}
+
+.explorepage-map-location-container {
+  position: relative;
+  z-index: 1;
 }
 
 .explorepage-map-location {
