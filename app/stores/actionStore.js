@@ -10,14 +10,14 @@ class Store {
     @observable actions = new Map();
 
     @action addToActions = (action) => {
-        this.actions.set(action.name, action);
+      this.actions.set(action.name, action);
     };
-    @action removeFromActions = () => {
-        this.actions.delete(action);
+    @action removeFromActions = (action) => {
+        this.actions.delete(action.name);
     };
-    //@action addActions = () => {
-    //    actions.forEach((action) => this.addToActions(action));
-    //};
+    @action clearActions = () => {
+      this.actions.clear();
+    };
 
     @computed get currentActions() {
         return toJS(this.actions);

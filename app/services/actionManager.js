@@ -10,7 +10,7 @@ import { playerStore, locationStore, actionStore } from '../stores';
 import actions from 'assets/json/actions.json';
 import items from 'assets/json/items.json';
 
-var parseMapFromString = (inStr) => {
+const parseMapFromString = (inStr) => {
     if (inStr === "" || inStr === null || inStr === undefined) {
         return inStr;
     }
@@ -25,13 +25,13 @@ var parseMapFromString = (inStr) => {
     return map;
 };
 
-var parseAction = (action) => {
+const parseAction = (action) => {
     action.prereq = parseMapFromString(action.prereq);
     action.player_effects = parseMapFromString(action.player_effects);
     return action;
 };
 
-var validateAction = (action) => {
+const validateAction = (action) => {
     let prereqs = action.prereq;
     let valid = true;
     Object.keys(prereqs).forEach((prereq) => {

@@ -1,6 +1,9 @@
-import { timeStore, playerStore, navStore } from '../stores';
+import { timeStore, playerStore, navStore, actionStore } from '../stores';
+import { getValidActions } from './actionManager';
 
-const dayChange = (lastDay, newDay) => {
+const dayChange = () => {
+  const lastDay = timeStore.day;
+  const newDay = timeStore.passTime(action.time);
   let dayDiff = newDay - lastDay;
   let healthChange = 0;
   let hungerChange = 0;
@@ -17,13 +20,21 @@ const dayChange = (lastDay, newDay) => {
   }
 };
 
-const triggerLoop = (action) => {
-  console.log('action occurs', action);
-  const nowDay = timeStore.day;
-  const newDay = timeStore.passTime(action.time);
-  dayChange(newDay, nowDay);
+const populateActions = () => {
+  const availableActions = getValidActions();
+  actionStore.clearActions();
+  availableActions.forEach((action) => {
+    actionStore.addToActions(action);
+  });
 };
 
+const triggerLoop = (action) => {
+  console.log('action occurs', action);
+  dayChange();
+  populateActions();
+};
+
+populateActions();
 module.exports = {
   triggerLoop,
 };
