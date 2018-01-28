@@ -10,7 +10,6 @@ import Button from 'material-ui/Button';
 import { navStore, logStore, actionStore } from '../../stores';
 import actionManager from '../../services/actionManager';
 
-
 @observer
 class ActionPanel extends React.Component{
   render() {

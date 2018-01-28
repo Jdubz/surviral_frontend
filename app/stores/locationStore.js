@@ -8,7 +8,7 @@ import {
 
 import locations from 'assets/json/locations.json'
 
-var calculateItemsRatio = (location) => {
+const calculateItemsRatio = (location) => {
     if (location.items === "" || location.items === null) {
         return;
     }
@@ -33,11 +33,14 @@ var calculateItemsRatio = (location) => {
 const _locations = locations.map(calculateItemsRatio);
 
 class Store {
-  @observable id = 12345
-  @observable description = 'There is nothing interesting here';
+  @observable id = 12345;
   @observable food = 0;
   @observable medicine = 0;
   @observable inventory = new Map();
+  @observable currentLocation = {
+    name: 'location name',
+    description: 'There is nothing interesting here',
+  };
 
   @action modDescription = (newDescription) => {
     this.description = newDescription;
@@ -65,10 +68,16 @@ class Store {
       this.inventory.delete(item.name);
     }
   };
+  @action changeLocation = (newLoc) => {
+    this.currentLocation = newLoc;
+  };
 
   @computed get inventoryItems() {
     return toJS(this.inventory);
   };
+  @computed get location() {
+    return toJS(this.currentLocation);
+  }
 }
 
 let locationStore = new Store();
