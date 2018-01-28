@@ -77,7 +77,7 @@ class ExplorePage extends React.Component {
                 </div>
               );
             })}
-            {this.state.playerIsMoving ? this.renderFeet()}
+            {this.renderFeet()}
             <canvas
               className="explorepage-map"
               width={this.state.mapWidth}
