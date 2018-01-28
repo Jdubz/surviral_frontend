@@ -1,17 +1,18 @@
 import {
   observable,
   action,
-  mobx,
-  toJS,
-  computed,
 } from 'globalImports';
 
 class Store {
-  @observable time = 0;
+  @observable masterTime = 0;
+  @observable day = 0;
+  @observable hour = 0;
 
   @action passTime(inc) {
-    this.time += inc;
-    return this.time;
+    this.masterTime += inc;
+    this.day = Math.floor(this.masterTime / 24);
+    this.hour = this.masterTime % 24;
+    return this.day;
   }
 }
 
