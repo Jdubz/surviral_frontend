@@ -22,10 +22,21 @@ class Store {
     this.medicine = newMeds;
   };
   @action addToInventory = (item) => {
-    this.inventory.set(item.name, item);
+    if (this.inventory.has(item.name)) {
+      const addItem = this.inventory.get(item.name);
+      addItem.quantity++;
+    } else {
+      item.quantity = 1;
+      this.inventory.set(item.name, item);
+    }
   };
-  @action removeFromInventory = (key) => {
-    this.inventory.delete(key);
+  @action removeFromInventory = (item) => {
+    if (this.inventory.has(item.name)) {
+      const delItem = this.inventory.get(item.name);
+      delItem.quantity--;
+    } else {
+      this.inventory.delete(item.name);
+    }
   };
 
   @computed get inventoryItems() {
