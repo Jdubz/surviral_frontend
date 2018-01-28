@@ -17,6 +17,18 @@ import findParentWithClass from '../../utils/findParentWithClass';
 import distanceBetweenTwoPoints from '../../utils/distanceBetweenTwoPoints';
 import angleBetweenTwoPoints from '../../utils/angleBetweenTwoPoints';
 
+const types = {
+  House: {
+    width: 200,
+    height: 200,
+  },
+  Forest: {
+    width: 200,
+    height: 300,
+  },
+}
+
+
 const locations = [
   {
     id: 12345,
@@ -38,13 +50,19 @@ const locations = [
 class ExplorePage extends React.Component {
   constructor(props) {
     super(props);
+
+    const activeLocation = locations.find((location) => location.id === locationStore.id);
+    const type = types[activeLocation.type];
+    const x = activeLocation.mapX + (type.width/2);
+    const y = activeLocation.mapY + (type.height/2);
+
     this.state = {
       scrollX: 0,
       scrollY: 0,
       mapWidth: 5000,
       mapHeight: 5000,
-      playerX: 0,
-      playerY: 0,
+      playerX: x,
+      playerY: y,
       playerIsMoving: false,
       playerFacingAngle: 0,
       playerDimension: 80,
@@ -77,7 +95,7 @@ class ExplorePage extends React.Component {
                 </div>
               );
             })}
-            {this.renderFeet()}
+            {this.state.playerIsMoving ? this.renderFeet() : null}
             <canvas
               className="explorepage-map"
               width={this.state.mapWidth}
@@ -89,7 +107,7 @@ class ExplorePage extends React.Component {
     </div>);
   }
   handlePlayerMovement(event) {
-    if (!event) {
+    if (!event || this.state.playerIsMoving) {
       return;
     }
 
@@ -128,7 +146,7 @@ class ExplorePage extends React.Component {
           playerFacingAngle: angleBetweenTwoPoints(playerX, playerY, desiredX, desiredY),
         });
       })
-      .onStop(() => {
+      .onComplete(() => {
         this.setState({
           playerIsMoving: false,
           playerAnimation: null,
@@ -173,7 +191,7 @@ class ExplorePage extends React.Component {
 
     const playerOffset = playerDimension / 2;
 
-    const style= {
+    const style = {
       transform: `translate(${playerX - playerOffset}px, ${playerY - playerOffset}px) rotate(${playerFacingAngle}deg)`,
       height: playerDimension,
       width: playerDimension,
@@ -188,10 +206,10 @@ class ExplorePage extends React.Component {
     );
   }
   renderHouse(location) {
-    const style= {
+    const style = {
       transform: `translate(${location.mapX}px, ${location.mapY}px)`,
-      height: 200,
-      width: 200,
+      height: types[location.type].height,
+      width: types[location.type].width,
     };
 
     const isActive = location.id === locationStore.id;
@@ -201,10 +219,10 @@ class ExplorePage extends React.Component {
     );
   }
   renderForest(location) {
-    const style= {
+    const style = {
       transform: `translate(${location.mapX}px, ${location.mapY}px)`,
-      height: 200,
-      width: 300,
+      height: types[location.type].height,
+      width: types[location.type].width,
     };
 
     const isActive = location.id === locationStore.id;
