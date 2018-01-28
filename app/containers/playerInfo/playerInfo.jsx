@@ -12,7 +12,6 @@ import { playerStore } from '../../stores';
 @observer
 class PlayerInfo extends React.Component {
   render() {
-    console.log(playerStore.inventoryItems);
     return (
       <div className="playerInfo-container">
         <Grid item xs={12}>

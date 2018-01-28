@@ -3,6 +3,7 @@ import {
   render,
   es6Promise,
 } from 'globalImports';
+import DevTools from 'mobx-react-devtools';
 
 // components
 import Header from 'containers/header/header';
@@ -21,6 +22,7 @@ render(
       <Header />
       <HomePage />
       <MyFooter />
+      <DevTools />
     </div>
   , document.getElementById('mount')
 );
