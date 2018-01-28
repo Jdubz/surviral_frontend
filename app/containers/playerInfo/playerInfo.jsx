@@ -25,8 +25,10 @@ class PlayerInfo extends React.Component {
             <Button raised={true} onClick={() => {
               console.log('Eat Food');
             }}>Eat</Button>
+            <br />
             <Typography type="headline" component="h4">Health</Typography>
             <LinearProgress mode="determinate" value={playerStore.health * 10} />
+            <br />
             <Typography type="body1">{`Meds: ${playerStore.medicine}`}</Typography>
             <Button raised={true} onClick={() => {
               console.log('Use Meds');
