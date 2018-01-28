@@ -59,6 +59,7 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^1.4.0",
+    "@tweenjs/tween.js": "^17.2.0",
     "babel": "^6.23.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "body-parser": "^1.17.2",
