@@ -24,8 +24,8 @@ class Store {
   };
 
   @computed inventoryItems() {
-    return toJS(this.inventory)
-  }
+    return toJS(this.inventory;)
+  };
 }
 
 let locationStore = new Store();

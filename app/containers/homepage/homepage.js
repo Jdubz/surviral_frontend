@@ -7,7 +7,7 @@ import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import { LinearProgress } from 'material-ui/Progress';
-import navStore from '../../stores/navStore';
+import { navStore } from '../../stores';
 
 @observer
 class HomePage extends React.Component {

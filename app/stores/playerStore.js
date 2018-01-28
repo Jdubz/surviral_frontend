@@ -6,10 +6,19 @@ import {
 } from 'globalImports';
 
 class Store {
+  @observable hunger = 0;
+  @observable health = 10;
   @observable food = 0;
   @observable medicine = 0;
   @observable inventory = new Map();
 
+
+  @action modHunger = (newHunger) => {
+    this.hunger = newHunger;
+  };
+  @action modHealth = (newHealth) => {
+    this.health = newHealth;
+  };
   @action modFood = (newFood) => {
     this.food = newFood;
   };
@@ -24,8 +33,8 @@ class Store {
   };
 
   @computed inventoryItems() {
-    return toJS(this.inventory))
-  }
+    return toJS(this.inventory);
+  };
 }
 
 let playerStore = new Store();
