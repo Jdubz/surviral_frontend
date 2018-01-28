@@ -61,7 +61,8 @@
 .homepage-paper {
   padding: 16px;
   text-align: 'center';
-  // color: theme.palette.text.secondary
+  box-sizing: border-box;
+  height: 100%;
 }
 
 .homepage-content {
