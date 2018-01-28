@@ -31,16 +31,3 @@
   position: absolute;
   z-index: 1;
 }
-
-.explorepage-map-location {
-  fill: grey;
-  cursor: pointer;
-
-  &.is-active {
-    fill: #F06E42;
-  }
-
-  &:hover {
-    fill: #F08762;
-  }
-}
