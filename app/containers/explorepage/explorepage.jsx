@@ -88,12 +88,14 @@ class ExplorePage extends React.Component {
         <div className="explorepage-map-container">
           <div
             className="explorepage-map-inner-container"
-            onClick={(e) => this.handlePlayerMovement(e)}>
+          >
+            {this.state.playerIsMoving ? this.renderFeet() : null}
             {locations.map((location, index) => {
               return (
                 <div
                   key={index}
-                  className="explorepage-map-svg-container"
+                  className="explorepage-map-svg-container explorepage-map-location"
+                  onClick={(e) => this.handleMovePlayerToLocation(e, location)}
                 >
                   <MapLocation
                     key={index}
@@ -103,21 +105,23 @@ class ExplorePage extends React.Component {
                 </div>
               );
             })}
-            {this.state.playerIsMoving ? this.renderFeet() : null}
             <canvas
               className="explorepage-map"
               width={this.state.mapWidth}
               height={this.state.mapHeight}
+              onClick={(e) => this.handleMovePlayerToClick(e)}
             />
           </div>
         </div>
       </Paper>
     </div>);
   }
-  handlePlayerMovement(event) {
+  handleMovePlayerToLocation(event, location) {
     if (!event || this.state.playerIsMoving) {
       return;
     }
+
+    event.preventDefault();
 
     const { clientX, clientY, target } = event;
     const container = findParentWithClass(target, 'explorepage-map-inner-container');
@@ -131,16 +135,40 @@ class ExplorePage extends React.Component {
     const desiredX = clientX - left;
     const desiredY = clientY - top;
     const { playerX, playerY } = this.state;
-    const distance = distanceBetweenTwoPoints(desiredX, desiredY, playerX, playerY);
+  }
+  handleMovePlayerToClick(event) {
+    if (!event || this.state.playerIsMoving) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const { clientX, clientY, target } = event;
+    const container = findParentWithClass(target, 'explorepage-map-inner-container');
+
+    if (container === null) {
+      return;
+    }
+
+    const { top, left } = container.getBoundingClientRect();
+
+    const desiredX = clientX - left;
+    const desiredY = clientY - top;
+    const { playerX, playerY } = this.state;
+
+    this.animatePlayerMove(playerX, playerY, desiredX, desiredY);
+  }
+  animatePlayerMove(startX, startY, endX, endY) {
+    const distance = distanceBetweenTwoPoints(endX, endY, startX, startY);
     function animate(time) {
       requestAnimationFrame(animate);
       TWEEN.update(time);
     }
     requestAnimationFrame(animate);
 
-    const coords = { x: playerX, y: playerY }; // Start at player location
+    const coords = { x: startX, y: startY }; // Start at player location
     const tween = new TWEEN.Tween(coords)
-      .to({ x: desiredX, y: desiredY }, (distance / playerStore.moveSpeed) * displaySpeedReduction)
+      .to({ x: endX, y: endY }, (distance / playerStore.moveSpeed) * displaySpeedReduction)
       .onUpdate(() => {
         // TODO: make this handle stepping animation
         this.setState({
@@ -151,7 +179,7 @@ class ExplorePage extends React.Component {
       .onStart(() => {
         this.setState({
           playerIsMoving: true,
-          playerFacingAngle: angleBetweenTwoPoints(playerX, playerY, desiredX, desiredY),
+          playerFacingAngle: angleBetweenTwoPoints(startX, startY, endX, endY),
         });
       })
       .onComplete(() => {
