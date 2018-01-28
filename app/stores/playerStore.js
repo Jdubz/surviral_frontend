@@ -12,6 +12,7 @@ class Store {
   @observable food = 0;
   @observable medicine = 0;
   @observable inventory = new Map();
+  @observable moveSpeed = 1;
 
   @action modHunger = (newHunger) => {
     this.hunger = newHunger;
