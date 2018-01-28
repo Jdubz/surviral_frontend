@@ -12,7 +12,7 @@ import FontFaceObserver from 'fontfaceobserver';
 import es6Promise from 'es6-promise';
 import 'whatwg-fetch';
 import { observer } from 'mobx-react';
-import mobx, { observable, action } from 'mobx';
+import mobx, { observable, action, computed, toJS } from 'mobx';
 import $ from 'jquery';
 
 module.exports = {
@@ -29,6 +29,8 @@ module.exports = {
   mobx,
   observable,
   action,
+  computed,
+  toJS,
   $,
   Link
 };
