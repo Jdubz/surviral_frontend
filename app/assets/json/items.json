@@ -1,37 +1,54 @@
 [
   {
-    "id": 0,
-    "name": "food",
-    "description": ""
+    "id": "food",
+    "pretty_name": "Food"
   },
   {
-    "id": 1,
-    "name": "water",
-    "description": ""
+    "id": "water",
+    "pretty_name": "Water"
   },
   {
-    "id": 2,
-    "name": "ibuprofen",
-    "description": ""
+    "id": "ibuprofen",
+    "pretty_name": "Ibuprofen"
   },
   {
-    "id": 3,
-    "name": "coffee",
-    "description": ""
+    "id": "coffee",
+    "pretty_name": "Instant Coffee"
   },
   {
-    "id": 4,
-    "name": "cocaine",
-    "description": ""
+    "id": "upper",
+    "pretty_name": "Uppers"
   },
   {
-    "id": 5,
-    "name": "bandage",
-    "description": ""
+    "id": "bandage",
+    "pretty_name": "Bandage"
   },
   {
-    "id": 6,
-    "name": "map",
-    "description": ""
+    "id": "map",
+    "pretty_name": "Soggy Map"
+  },
+  {
+    "id": "shopping_cart",
+    "pretty_name": "Rusty Shopping Cart"
+  },
+  {
+    "id": "baby_stroller",
+    "pretty_name": "Moldy Baby Stroller"
+  },
+  {
+    "id": "bike",
+    "pretty_name": "Fixey"
+  },
+  {
+    "id": "beer",
+    "pretty_name": "Beer"
+  },
+  {
+    "id": "shoes",
+    "pretty_name": "New Shoes"
+  },
+  {
+    "id": "backpack",
+    "pretty_name": "Man Sachel"
   }
 ]

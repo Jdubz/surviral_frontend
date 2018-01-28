@@ -1,17 +1,32 @@
 [
   {
-    "id": 0,
+    "id": "supermarket",
     "name": "Supermarket",
-    "items": "food:1,water:1"
+    "items": "food:5,water:5,shopping_cart:1,beer:2",
+    "supplies": 3
   },
   {
-    "id": 1,
+    "id": "drug_store",
     "name": "Drug Store",
-    "items": "ibuprofen:1,bandage:1"
+    "items": "ibuprofen:2,bandage:1,uppers:1",
+    "supplies": 3
   },
   {
-    "id": 2,
+    "id": "home",
     "name": "A Cramped Hovel",
-    "items": ""
+    "items": "",
+    "supplies": 1
+  },
+  {
+    "id": "convience_store",
+    "name": "Convience Store",
+    "items": "food:2,water:2,ibuprofen:1,beer:1",
+    "supplies": 2
+  },
+  {
+    "id": "house",
+    "name": "Pristinely Destroyed House",
+    "items": "bike:1,shoes:1",
+    "supplies": 1
   }
 ]

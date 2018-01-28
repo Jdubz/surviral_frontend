@@ -1,15 +1,15 @@
 [
   {
-    "id": 1,
+    "id": "eat_food",
     "name": "Eat Food",
     "prereq": "food:1",
     "player_effects": "hunger:2",
     "time": 0,
-    "logs": "You eat the food. MMM donuts...",
+    "logs": "Do you remember the last hot meal you had?",
     "type": "consume"
   },
   {
-    "id": 2,
+    "id": "drink_water",
     "name": "Drink Water",
     "prereq": "water:1",
     "player_effects": "hunger:1",
@@ -18,7 +18,7 @@
     "type": "consume"
   },
   {
-    "id": 2,
+    "id": "take_painkillers",
     "name": "Take Painkillers",
     "prereq": "ibuprofen:1",
     "player_effects": "hunger:1",
@@ -27,34 +27,34 @@
     "type": "consume"
   },
   {
-    "id": 3,
+    "id": "drink_coffee",
     "name": "Drink Coffee",
     "prereq": "cofee:1",
     "player_effects": "health:1",
     "time": 0,
-    "logs": "Oh how I love Venti double shot carmel non fat non gmo organic lattes...",
+    "logs": "Powdered coffee is still coffee... right?",
     "type": "consume"
   },
   {
-    "id": 4,
+    "id": "take_upper",
     "name": "Take Upper",
     "prereq": "upper:1",
-    "player_effects": "hunger:2,health:-2",
+    "player_effects": "hunger:2,health:-2,movespeed:1.5",
     "time": 0,
-    "logs": "Your teeth are numb.",
+    "logs": "Are you getting amped? Let's get moving.",
     "type": "consume"
   },
   {
-    "id": 5,
+    "id": "apply_bandages",
     "name": "Apply Bandage",
     "prereq": "bandage:1",
     "player_effects": "health:1",
     "time": 0,
-    "logs": "That's the way my mom used to patch me up.",
+    "logs": "Bandaid here, gauze there, plenty of scrapes to patch up.",
     "type": "consume"
   },
   {
-    "id": 6,
+    "id": "explore",
     "name": "Explore",
     "prereq": "",
     "player_effects": "",
@@ -63,12 +63,66 @@
     "type": "explore"
   },
   {
-    "id": 7,
-    "name": "Map",
+    "id": "view_map",
+    "name": "View Map",
     "prereq": "map:1",
     "player_effects": "",
     "time": 0,
     "logs": "There's a safe haven to the North.",
     "type": "use"
+  },
+  {
+    "id": "drink_beer",
+    "name": "Drink Beer",
+    "prereq": "beer:1",
+    "player_effects": "hunger:1",
+    "time": 0,
+    "logs": "Beer to get through the day.",
+    "type": "consume"
+  },
+  {
+    "id": "equip_baby_stroller",
+    "name": "Bring Stroller",
+    "prereq": "baby_stroller:1",
+    "player_effects": "inventory:3",
+    "time": 0,
+    "logs": "You push a baby stroller.",
+    "type": "equip"
+  },
+  {
+    "id": "equip_shopping_cart",
+    "name": "Push Shopping Cart",
+    "prereq": "shoping_cart:1",
+    "player_effects": "inventory:6",
+    "time": 0,
+    "logs": "You push a shopping cart.",
+    "type": "equip"
+  },
+  {
+    "id": "equip_bike",
+    "name": "Ride Bike",
+    "prereq": "bike:1",
+    "player_effects": "movespeed:4",
+    "time": 0,
+    "logs": "You get on a bike.",
+    "type": "equip"
+  },
+  {
+    "id": "equip_shoes",
+    "name": "Replace Shoes",
+    "prereq": "shoes:1",
+    "player_effects": "movespeed:2",
+    "time": 0,
+    "logs": "Shoes. Fuck yeah.",
+    "type": "equip"
+  },
+  {
+    "id": "equip_backpack",
+    "name": "Man Sachel",
+    "prereq": "backpack:1",
+    "player_effects": "inventory:2",
+    "time": 0,
+    "logs": "Man sachel not a purse.",
+    "type": "equip"
   }
 ]
