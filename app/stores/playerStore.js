@@ -3,6 +3,7 @@ import {
   action,
   mobx,
   toJS,
+  computed,
 } from 'globalImports';
 
 class Store {

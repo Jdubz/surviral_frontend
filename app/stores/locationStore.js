@@ -3,6 +3,7 @@ import {
   action,
   mobx,
   toJS,
+  computed,
 } from 'globalImports';
 
 class Store {
@@ -24,7 +25,7 @@ class Store {
   };
 
   @computed inventoryItems() {
-    return toJS(this.inventory;)
+    return toJS(this.inventory);
   };
 }
 
