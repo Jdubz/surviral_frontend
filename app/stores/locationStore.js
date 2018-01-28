@@ -7,10 +7,14 @@ import {
 } from 'globalImports';
 
 class Store {
+  @observable description = 'There is nothing interesting here';
   @observable food = 0;
   @observable medicine = 0;
   @observable inventory = new Map();
 
+  @action modDescription = (newDescription) => {
+    this.description = newDescription;
+  };
   @action modFood = (newFood) => {
     this.food = newFood;
   };
