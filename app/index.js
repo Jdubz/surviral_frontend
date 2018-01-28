@@ -8,7 +8,7 @@ import DevTools from 'mobx-react-devtools';
 // components
 import Header from 'containers/header/header';
 import MyFooter from 'containers/footer/footer';
-import HomePage from 'containers/homepage/homepage';
+import Pager from 'containers/pager/pager';
 
 // styles import. It needs to be in the project somewhere once
 import styles from 'styles/app.scss';
@@ -20,7 +20,7 @@ es6Promise.polyfill();
 render(
     <div>
       <Header />
-      <HomePage />
+      <Pager />
       <MyFooter />
       <DevTools />
     </div>
