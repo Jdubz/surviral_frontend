@@ -11,7 +11,10 @@ import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import MapLocation from '../mapLocation/mapLocation';
-import { locationStore } from '../../stores';
+import {
+  locationStore,
+  playerStore,
+} from '../../stores';
 import drawBezierCurveThrough from '../../utils/drawBezierCurveThrough';
 import findParentWithClass from '../../utils/findParentWithClass';
 import distanceBetweenTwoPoints from '../../utils/distanceBetweenTwoPoints';
@@ -27,7 +30,6 @@ const types = {
     height: 300,
   },
 }
-
 
 const locations = [
   {
@@ -45,6 +47,8 @@ const locations = [
     mapY: 600
   }
 ];
+
+const displaySpeedReduction = 4;
 
 @observer
 class ExplorePage extends React.Component {
@@ -136,7 +140,7 @@ class ExplorePage extends React.Component {
 
     const coords = { x: playerX, y: playerY }; // Start at player location
     const tween = new TWEEN.Tween(coords)
-      .to({ x: desiredX, y: desiredY }, 1000) // TODO: make this factor of speed over distance
+      .to({ x: desiredX, y: desiredY }, (distance / playerStore.moveSpeed) * displaySpeedReduction)
       .onUpdate(() => {
         // TODO: make this handle stepping animation
         this.setState({
