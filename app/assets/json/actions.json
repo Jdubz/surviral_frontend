@@ -58,7 +58,7 @@
     "name": "Explore",
     "prereq": "",
     "player_effects": "",
-    "time": 0,
+    "time": 6,
     "logs": "",
     "type": "explore"
   },
@@ -124,5 +124,14 @@
     "time": 0,
     "logs": "Man sachel not a purse.",
     "type": "equip"
+  },
+  {
+    "id": "wait",
+    "name": "Wait 12 hours",
+    "prereq": "",
+    "player_effects": "",
+    "time": 12,
+    "logs": "You get bored",
+    "type": "wait"
   }
 ]

@@ -1,7 +1,7 @@
 import { timeStore, playerStore, navStore, actionStore } from '../stores';
 import { getValidActions } from './actionManager';
 
-const dayChange = () => {
+const dayChange = (action) => {
   const lastDay = timeStore.day;
   const newDay = timeStore.passTime(action.time);
   let dayDiff = newDay - lastDay;
@@ -30,7 +30,7 @@ const populateActions = () => {
 
 const triggerLoop = (action) => {
   console.log('action occurs', action);
-  dayChange();
+  dayChange(action);
   populateActions();
 };
 

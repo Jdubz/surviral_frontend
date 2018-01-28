@@ -17,10 +17,10 @@ class Store {
   @observable moveSpeed = 1;
 
   @action modHunger = (newHunger) => {
-    this.hunger = newHunger;
+    this.hunger += newHunger;
   };
   @action modHealth = (newHealth) => {
-    this.health = newHealth;
+    this.health += newHealth;
   };
   @action modFood = (newFood) => {
     this.food = newFood;
