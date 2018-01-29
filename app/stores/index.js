@@ -4,8 +4,10 @@ import playerStore from './playerStore';
 import logStore from './logStore';
 import actionStore from './actionStore';
 import timeStore from './timeStore';
+import audioManagerStore from './audioManagerStore';
 
 module.exports = {
+  audioManagerStore,
   locationStore,
   navStore,
   playerStore,

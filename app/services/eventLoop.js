@@ -1,7 +1,8 @@
-import { timeStore, playerStore, navStore, actionStore } from '../stores';
+import { timeStore, playerStore, navStore, actionStore, audioManagerStore } from '../stores';
 import { getValidActions } from './actionManager';
 
 const dayChange = (action) => {
+  console.log(action.sound);
   const lastDay = timeStore.day;
   const newDay = timeStore.passTime(action.time);
   let dayDiff = newDay - lastDay;

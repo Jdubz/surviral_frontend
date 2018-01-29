@@ -9,6 +9,7 @@ import {
 import { playerStore, locationStore, actionStore } from '../stores';
 import actions from 'assets/json/actions.json';
 import items from 'assets/json/items.json';
+import sounds from 'assets/json/sounds.json';
 
 const parseMapFromString = (inStr) => {
     if (inStr === "" || inStr === null || inStr === undefined) {
@@ -28,6 +29,7 @@ const parseMapFromString = (inStr) => {
 const parseAction = (action) => {
     action.prereq = parseMapFromString(action.prereq);
     action.player_effects = parseMapFromString(action.player_effects);
+    action.sound = sounds.find((sound) => action.sound_effect === sound.id);
     return action;
 };
 
