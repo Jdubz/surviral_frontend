@@ -6,8 +6,9 @@ import {
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
-import { navStore, logStore, actionStore } from '../../stores';
+import { navStore, logStore, actionStore, locationStore } from '../../stores';
 import eventLoop from '../../services/eventLoop';
+import { searchLocation } from '../../services/locationManager';
 
 @observer
 class ActionPanel extends React.Component{
@@ -24,12 +25,10 @@ class ActionPanel extends React.Component{
                 key={actionName}
                 onClick={() => {
                   const action = actionStore.currentActions[actionName];
-                  if (action.type === "explore") {
-                    navStore.changePage("explore");
-                  } else {
-                    logStore.addEntry(action.logs);
-                    eventLoop.triggerLoop(action);
-                  }
+                  console.log('action onclick', action);
+
+                  logStore.addEntry(action.logs);
+                  eventLoop.triggerLoop(action);
                 }}>
                 {actionName}
               </Button>)

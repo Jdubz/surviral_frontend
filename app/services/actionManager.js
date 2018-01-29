@@ -36,8 +36,9 @@ const parseAction = (action) => {
 const validateAction = (action) => {
     let valid = true;
     if (action.type === "search") {
-        return action;
+        return locationStore.location !== null;
     }
+    //console.log('validateAction', locationStore.inventoryItems, action);
     Object.keys(action.prereq).forEach((prereq) => {
         let prereqInPlayerInventory = playerStore.inventoryItems.hasOwnProperty(prereq);
         let prereqInLocationInventory = locationStore.location && locationStore.inventoryItems.hasOwnProperty(prereq);
@@ -51,5 +52,6 @@ const validateAction = (action) => {
 let _actions = actions.map(parseAction);
 
 module.exports.getValidActions = () => {
+    console.log(locationStore.location);
     return _actions.filter(validateAction);
 };
