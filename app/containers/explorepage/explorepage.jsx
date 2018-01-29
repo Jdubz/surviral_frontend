@@ -52,9 +52,7 @@ class ExplorePage extends React.Component {
     super(props);
 
     const activeLocation = locations.find((location) => location.id === locationStore.id);
-    const type = types[activeLocation.type];
-    const x = activeLocation.mapX + (type.width/2);
-    const y = activeLocation.mapY + (type.height/2);
+    const { x, y } = this.getLocationCenter(activeLocation);
 
     this.state = {
       scrollX: 0,
@@ -64,6 +62,7 @@ class ExplorePage extends React.Component {
       playerX: x,
       playerY: y,
       playerIsMoving: false,
+      playerIsAtLocation: true,
       playerFacingAngle: 0,
       playerDimension: 80,
       playerAnimation: null,
@@ -81,7 +80,7 @@ class ExplorePage extends React.Component {
   render() {
     return (
       <div className="explorepage-container">
-        {this.state.playerIsMoving ? this.renderFeet() : null}
+        {!this.state.playerIsAtLocation ? this.renderFeet() : null}
         {locations.map((location, index) => {
           return (
             <div
@@ -106,6 +105,15 @@ class ExplorePage extends React.Component {
       </div>
     );
   }
+  getLocationCenter(location) {
+    const locationWidth = types[location.type].width;
+    const locationHeight = types[location.type].height;
+
+    return {
+      x: location.mapX + (locationWidth / 2),
+      y: location.mapY + (locationHeight / 2),
+    }
+  }
   handleMovePlayerToLocation(event, location) {
     if (!event || this.state.playerIsMoving) {
       return;
@@ -122,9 +130,10 @@ class ExplorePage extends React.Component {
 
     const { top, left } = container.getBoundingClientRect();
 
-    const desiredX = clientX - left;
-    const desiredY = clientY - top;
+    const { x, y } = this.getLocationCenter(location);
     const { playerX, playerY } = this.state;
+
+    this.animatePlayerMove(playerX, playerY, x, y, true);
   }
   handleMovePlayerToClick(event) {
     if (!event || this.state.playerIsMoving) {
@@ -146,9 +155,9 @@ class ExplorePage extends React.Component {
     const desiredY = clientY - top;
     const { playerX, playerY } = this.state;
 
-    this.animatePlayerMove(playerX, playerY, desiredX, desiredY);
+    this.animatePlayerMove(playerX, playerY, desiredX, desiredY, false);
   }
-  animatePlayerMove(startX, startY, endX, endY) {
+  animatePlayerMove(startX, startY, endX, endY, isToLocation) {
     const distance = distanceBetweenTwoPoints(endX, endY, startX, startY);
     function animate(time) {
       requestAnimationFrame(animate);
@@ -168,6 +177,7 @@ class ExplorePage extends React.Component {
       })
       .onStart(() => {
         this.setState({
+          playerIsAtLocation: false,
           playerIsMoving: true,
           playerFacingAngle: angleBetweenTwoPoints(startX, startY, endX, endY),
         });
@@ -176,6 +186,7 @@ class ExplorePage extends React.Component {
         this.setState({
           playerIsMoving: false,
           playerAnimation: null,
+          playerIsAtLocation: isToLocation,
         });
       })
       .start();
