@@ -26,9 +26,9 @@ class Store {
   //};
 
   @action addKnownLocation = (location) => {
-      const _location = Object.assign({}, location);
-      _location.inventory = new Map();
-      _location.knownLocationId = knownLocationId;
+    const _location = Object.assign({}, location);
+    _location.inventory = new Map();
+    _location.knownLocationId = knownLocationId;
     this.knownLocations.set(knownLocationId, _location);
     knownLocationId++;
   };
@@ -62,6 +62,9 @@ class Store {
   };
 
   @computed get inventoryItems() {
+    if (this.currentLocation === null || this.currentLocation.inventory == undefined) {
+        return {};
+    };
     return toJS(this.currentLocation.inventory);
   };
   @computed get location() {

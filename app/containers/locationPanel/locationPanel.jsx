@@ -10,7 +10,6 @@ import Typography from 'material-ui/Typography';
 @observer
 class LocationPanel extends React.Component {
   render() {
-    if (locationStore.location === null) { return null; }
     const { name } = locationStore.location;
     return (
       <div className="locationPanel-container">
