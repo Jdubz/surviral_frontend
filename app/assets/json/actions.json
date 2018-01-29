@@ -77,7 +77,7 @@
     "time": 0,
     "logs": "There's a safe haven to the North.",
     "type": "use",
-    "sound_effect": ""
+    "sound_effect": 10
   },
   {
     "id": "drink_beer",
@@ -97,7 +97,7 @@
     "time": 0,
     "logs": "You push a baby stroller.",
     "type": "equip",
-    "sound_effect": ""
+    "sound_effect": 9
   },
   {
     "id": "equip_shopping_cart",
@@ -107,7 +107,7 @@
     "time": 0,
     "logs": "You push a shopping cart.",
     "type": "equip",
-    "sound_effect": ""
+    "sound_effect": 9
   },
   {
     "id": "equip_bike",
@@ -117,7 +117,7 @@
     "time": 0,
     "logs": "You get on a bike.",
     "type": "equip",
-    "sound_effect": ""
+    "sound_effect": 9
   },
   {
     "id": "equip_shoes",
@@ -127,7 +127,7 @@
     "time": 0,
     "logs": "Shoes. Fuck yeah.",
     "type": "equip",
-    "sound_effect": ""
+    "sound_effect": 9
   },
   {
     "id": "equip_backpack",
@@ -137,6 +137,6 @@
     "time": 0,
     "logs": "Man sachel not a purse.",
     "type": "equip",
-    "sound_effect": ""
+    "sound_effect": 9
   }
 ]

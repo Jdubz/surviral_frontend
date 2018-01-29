@@ -9,34 +9,38 @@
   },
   {
     "id": 2,
-    "location": "app/assets/audio/Eating-Surviral.ogg"
+    "location": "assets/audio/Eating-Surviral.ogg"
   },
   {
     "id": 3,
-    "location": "app/assets/audio/Heartbeat-Fast-Surviral.ogg"
+    "location": "assets/audio/Heartbeat-Fast-Surviral.ogg"
   },
   {
     "id": 4,
-    "location": "app/assets/audio/Low-Health-Surviral.ogg"
+    "location": "assets/audio/Low-Health-Surviral.ogg"
   },
   {
     "id": 5,
-    "location": "app/assets/audio/New-Area-Surviral.ogg"
+    "location": "assets/audio/New-Area-Surviral.ogg"
   },
   {
     "id": 6,
-    "location": "app/assets/audio/New-Item-Discovery-Surviral.ogg"
+    "location": "assets/audio/New-Item-Discovery-Surviral.ogg"
   },
   {
     "id": 7,
-    "location": "app/assets/audio/Opening-Music-Surviral.ogg"
+    "location": "assets/audio/Opening-Music-Surviral.ogg"
   },
   {
     "id": 8,
-    "location": "app/assets/audio/Painkillers-Surviral.ogg"
+    "location": "assets/audio/Painkillers-Surviral.ogg"
   },
   {
     "id": 9,
-    "location": "app/assets/audio/Stimulants-Surviral.ogg"
+    "location": "assets/audio/Equip-Surviral.ogg"
+  },
+  {
+    "id": 10,
+    "location": "assets/audio/Map-Surviral.ogg"
   }
 ]
