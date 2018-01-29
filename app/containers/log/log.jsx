@@ -4,7 +4,6 @@ import {
 } from 'globalImports';
 
 import ReactDOM from 'react-dom';
-import Typography from 'material-ui/Typography';
 import { logStore } from '../../stores';
 
 @observer
@@ -13,7 +12,7 @@ class Log extends React.Component {
     return (<div className="log-container">
       {logStore.entries.reverse().map((entry, index) => {
         return (
-          <Typography paragraph key={index}>{entry}</Typography>
+          <p key={index}>{entry}</p>
         );
       })}
     </div>);
