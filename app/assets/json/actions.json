@@ -6,7 +6,8 @@
     "player_effects": "hunger:2",
     "time": 0,
     "logs": "Do you remember the last hot meal you had?",
-    "type": "consume"
+    "type": "consume",
+    "sound_effect": 2
   },
   {
     "id": "drink_water",
@@ -15,7 +16,8 @@
     "player_effects": "hunger:1",
     "time": 0,
     "logs": "Glug glug glug.",
-    "type": "consume"
+    "type": "consume",
+    "sound_effect": 1
   },
   {
     "id": "take_painkillers",
@@ -24,7 +26,8 @@
     "player_effects": "hunger:1",
     "time": 0,
     "logs": "That's the stuff.",
-    "type": "consume"
+    "type": "consume",
+    "sound_effect": 8
   },
   {
     "id": "drink_coffee",
@@ -33,7 +36,8 @@
     "player_effects": "health:1",
     "time": 0,
     "logs": "Powdered coffee is still coffee... right?",
-    "type": "consume"
+    "type": "consume",
+    "sound_effect": 9
   },
   {
     "id": "take_upper",
@@ -42,7 +46,8 @@
     "player_effects": "hunger:2,health:-2,movespeed:1.5",
     "time": 0,
     "logs": "Are you getting amped? Let's get moving.",
-    "type": "consume"
+    "type": "consume",
+    "sound_effect": 9
   },
   {
     "id": "apply_bandages",
@@ -51,16 +56,18 @@
     "player_effects": "health:1",
     "time": 0,
     "logs": "Bandaid here, gauze there, plenty of scrapes to patch up.",
-    "type": "consume"
+    "type": "consume",
+    "sound_effect": 0
   },
   {
     "id": "explore",
     "name": "Explore",
     "prereq": "",
     "player_effects": "",
-    "time": 6,
+    "time": 0,
     "logs": "",
-    "type": "explore"
+    "type": "explore",
+    "sound_effect": ""
   },
   {
     "id": "view_map",
@@ -69,7 +76,8 @@
     "player_effects": "",
     "time": 0,
     "logs": "There's a safe haven to the North.",
-    "type": "use"
+    "type": "use",
+    "sound_effect": ""
   },
   {
     "id": "drink_beer",
@@ -78,7 +86,8 @@
     "player_effects": "hunger:1",
     "time": 0,
     "logs": "Beer to get through the day.",
-    "type": "consume"
+    "type": "consume",
+    "sound_effect": 1
   },
   {
     "id": "equip_baby_stroller",
@@ -87,7 +96,8 @@
     "player_effects": "inventory:3",
     "time": 0,
     "logs": "You push a baby stroller.",
-    "type": "equip"
+    "type": "equip",
+    "sound_effect": ""
   },
   {
     "id": "equip_shopping_cart",
@@ -96,7 +106,8 @@
     "player_effects": "inventory:6",
     "time": 0,
     "logs": "You push a shopping cart.",
-    "type": "equip"
+    "type": "equip",
+    "sound_effect": ""
   },
   {
     "id": "equip_bike",
@@ -105,7 +116,8 @@
     "player_effects": "movespeed:4",
     "time": 0,
     "logs": "You get on a bike.",
-    "type": "equip"
+    "type": "equip",
+    "sound_effect": ""
   },
   {
     "id": "equip_shoes",
@@ -114,7 +126,8 @@
     "player_effects": "movespeed:2",
     "time": 0,
     "logs": "Shoes. Fuck yeah.",
-    "type": "equip"
+    "type": "equip",
+    "sound_effect": ""
   },
   {
     "id": "equip_backpack",
@@ -123,15 +136,7 @@
     "player_effects": "inventory:2",
     "time": 0,
     "logs": "Man sachel not a purse.",
-    "type": "equip"
-  },
-  {
-    "id": "wait",
-    "name": "Wait 12 hours",
-    "prereq": "",
-    "player_effects": "",
-    "time": 12,
-    "logs": "You get bored",
-    "type": "wait"
+    "type": "equip",
+    "sound_effect": ""
   }
 ]

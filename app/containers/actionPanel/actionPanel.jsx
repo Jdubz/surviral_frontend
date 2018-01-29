@@ -3,20 +3,18 @@ import {
   observer
 } from 'globalImports';
 
-import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import { navStore, logStore, actionStore } from '../../stores';
-import eventLoop from '../../services/eventLoop'
-import actionManager from '../../services/actionManager';
+import eventLoop from '../../services/eventLoop';
 
 @observer
 class ActionPanel extends React.Component{
   render() {
     return (
-      <Grid item xs={12} sm={6}>
-        <Paper className="homepage-paper">
+      <div className="actionPanel-container">
+        <Paper className="actionPanel-paper">
           <Typography type="headline" component="h3">Actions</Typography>
           {Object.keys(actionStore.currentActions).map((actionName) => {
             return (
@@ -37,8 +35,8 @@ class ActionPanel extends React.Component{
               </Button>)
           })}
         </Paper>
-      </Grid>
-    )
+      </div>
+    );
   }
 }
 

@@ -1,22 +1,10 @@
-.explorepage-map-container {
-  position: relative;
-
-  &:before {
-    display: block;
-    content: "";
-    width: 100%;
-    padding-top: 100%;
-  }
-}
-
-.explorepage-map-inner-container {
+.explorepage-container {
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  // border-radius: 50%;
-  border: 10px solid grey;
+  z-index: 0;
   overflow: scroll;
 }
 

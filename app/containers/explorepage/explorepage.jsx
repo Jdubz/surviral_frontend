@@ -6,10 +6,6 @@ import {
 
 import ReactDOM from 'react-dom';
 import TWEEN from '@tweenjs/tween.js';
-
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
 import MapLocation from '../mapLocation/mapLocation';
 import {
   locationStore,
@@ -29,7 +25,7 @@ const types = {
     width: 200,
     height: 300,
   },
-}
+};
 
 const locations = [
   {
@@ -83,38 +79,32 @@ class ExplorePage extends React.Component {
     }
   }
   render() {
-    return (<div className="explorepage-container">
-      <Paper className="explorepage-paper">
-        <div className="explorepage-map-container">
-          <div
-            className="explorepage-map-inner-container"
-          >
-            {this.state.playerIsMoving ? this.renderFeet() : null}
-            {locations.map((location, index) => {
-              return (
-                <div
-                  key={index}
-                  className="explorepage-map-svg-container explorepage-map-location"
-                  onClick={(e) => this.handleMovePlayerToLocation(e, location)}
-                >
-                  <MapLocation
-                    key={index}
-                    location={location}
-                    width={types[location.type].width}
-                    height={types[location.type].height} />
-                </div>
-              );
-            })}
-            <canvas
-              className="explorepage-map"
-              width={this.state.mapWidth}
-              height={this.state.mapHeight}
-              onClick={(e) => this.handleMovePlayerToClick(e)}
-            />
-          </div>
-        </div>
-      </Paper>
-    </div>);
+    return (
+      <div className="explorepage-container">
+        {this.state.playerIsMoving ? this.renderFeet() : null}
+        {locations.map((location, index) => {
+          return (
+            <div
+              key={index}
+              className="explorepage-map-svg-container explorepage-map-location"
+              onClick={(e) => this.handleMovePlayerToLocation(e, location)}
+            >
+              <MapLocation
+                key={index}
+                location={location}
+                width={types[location.type].width}
+                height={types[location.type].height} />
+            </div>
+          );
+        })}
+        <canvas
+          className="explorepage-map"
+          width={this.state.mapWidth}
+          height={this.state.mapHeight}
+          onClick={(e) => this.handleMovePlayerToClick(e)}
+        />
+      </div>
+    );
   }
   handleMovePlayerToLocation(event, location) {
     if (!event || this.state.playerIsMoving) {
@@ -124,7 +114,7 @@ class ExplorePage extends React.Component {
     event.preventDefault();
 
     const { clientX, clientY, target } = event;
-    const container = findParentWithClass(target, 'explorepage-map-inner-container');
+    const container = findParentWithClass(target, 'explorepage-container');
 
     if (container === null) {
       return;
@@ -144,7 +134,7 @@ class ExplorePage extends React.Component {
     event.preventDefault();
 
     const { clientX, clientY, target } = event;
-    const container = findParentWithClass(target, 'explorepage-map-inner-container');
+    const container = findParentWithClass(target, 'explorepage-container');
 
     if (container === null) {
       return;

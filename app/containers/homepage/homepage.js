@@ -3,29 +3,31 @@ import {
     observer
 } from 'globalImports';
 
-import Grid from 'material-ui/Grid';
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-import PLayerInfo from '../playerInfo/playerInfo';
+import ExplorePage from '../explorepage/explorepage';
+import PlayerInfo from '../playerInfo/playerInfo';
+import PlayerInventory from '../playerInfo/playerInventory';
 import Log from '../log/log';
 import ActionPanel from '../actionPanel/actionPanel';
 import LocationPanel from '../locationPanel/locationPanel';
+import LocationInventory from '../locationPanel/locationInventory';
+import TimeView from '../timeView/timeView';
 
 @observer
 class HomePage extends React.Component {
   render() {
     return (<div className="homepage-container">
-      <Grid container spacing={24}>
+      <div className="map-wrapper">
+        <ExplorePage />
         <LocationPanel />
-        <Grid item xs={12} sm={6}>
-          <Paper className="homepage-paper">
-            <Typography type="headline" component="h3">Log</Typography>
-            <Log />
-          </Paper>
-        </Grid>
+        <Log />
+      </div>
+      <div className="sidePanel-wrapper">
+        <TimeView />
+        <PlayerInfo />
         <ActionPanel />
-        <PLayerInfo />
-      </Grid>
+        <PlayerInventory />
+        <LocationInventory />
+      </div>
     </div>);
   }
 }

@@ -11,7 +11,7 @@ class MyFooter extends React.Component {
 
     render() {
       return <div className='footer-container'>
-        SurViral
+        <p>SurViral</p>
       </div>
     }
 }

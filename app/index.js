@@ -18,7 +18,7 @@ import config from 'config';
 es6Promise.polyfill();
 
 render(
-    <div>
+    <div className="app-container">
       <Header />
       <Pager />
       <MyFooter />

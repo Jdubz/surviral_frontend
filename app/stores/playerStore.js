@@ -7,10 +7,10 @@ import {
 } from 'globalImports';
 
 class Store {
-  @observable hungerMod = -1;
-  @observable healthMod = -1;
-  @observable hunger = 10;
-  @observable health = 10;
+  @observable hungerMod = -10;
+  @observable healthMod = -10;
+  @observable hunger = 100;
+  @observable health = 100;
   @observable food = 0;
   @observable medicine = 0;
   @observable inventory = new Map();
