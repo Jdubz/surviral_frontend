@@ -1,8 +1,7 @@
 .footer-container {
     border-top: 1px solid lightgrey;
-    padding-top: .7em;
-    padding-bottom: .3em;
-    margin-top: .5em;
-    margin-bottom: .5em;
-    text-align: center;
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: center;
+    width: 100%;
 }

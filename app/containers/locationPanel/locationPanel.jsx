@@ -3,24 +3,20 @@ import {
   observer,
 } from 'globalImports';
 
-import { locationStore, timeStore } from '../../stores';
-import Grid from 'material-ui/Grid';
+import { locationStore } from '../../stores';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 
 @observer
 class LocationPanel extends React.Component {
   render() {
-    const { name, description } = locationStore.location;
+    const { name } = locationStore.location;
     return (
-      <Grid item xs={12}>
-        <Paper className="homepage-paper">
-          <Typography>{`Day: ${timeStore.day}`}</Typography>
-          <Typography>{`Hour: ${timeStore.hour}`}</Typography>
+      <div className="locationPanel-container">
+        <Paper className="locationPanel-paper">
           <Typography>{name}</Typography>
-          <Typography>{description}</Typography>
         </Paper>
-      </Grid>
+      </div>
     )
   }
 }

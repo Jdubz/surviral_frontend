@@ -51,9 +51,22 @@ a {
     }
 }
 
+.app-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  flex-flow: column;
+}
+
 /////////////////////
 // Components
 
+@import '../containers/playerInfo/playerInventory';
+@import '../containers/timeView/timeView';
+@import '../containers/pager/pager';
+@import '../containers/actionPanel/actionPanel';
 @import '../containers/header/header';
 @import '../containers/homepage/homepage.scss';
 @import '../containers/explorepage/explorepage.scss';
