@@ -32,11 +32,13 @@ const parseAction = (action) => {
 };
 
 const validateAction = (action) => {
-    let prereqs = action.prereq;
     let valid = true;
-    Object.keys(prereqs).forEach((prereq) => {
+    if (action.type === "search") {
+        return action;
+    }
+    Object.keys(action.prereq).forEach((prereq) => {
         let prereqInPlayerInventory = playerStore.inventoryItems.hasOwnProperty(prereq);
-        let prereqInLocationInventory = locationStore.inventoryItems.hasOwnProperty(prereq);
+        let prereqInLocationInventory = locationStore.location && locationStore.inventoryItems.hasOwnProperty(prereq);
         if (!prereqInLocationInventory && !prereqInPlayerInventory) {
             valid = false;
         }

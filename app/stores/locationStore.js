@@ -6,61 +6,50 @@ import {
   computed,
 } from 'globalImports';
 
-import locations from 'assets/json/locations.json'
-
-const calculateItemsRatio = (location) => {
-    if (location.items === "" || location.items === null) {
-        return;
-    }
-    let splitItems = location.items.split(",");
-    let items = {};
-    let totalCount = 0;
-    splitItems.forEach((item) => {
-        let [name, count] = item.split(":");
-        count = parseInt(count);
-        items[name] = count;
-        totalCount += count;
-    });
-
-    Object.keys(items).map((name) => {
-        items[name] = items[name] / totalCount;
-    });
-
-    location.items = items;
-};
-
-// this contains the ratio of items with their ids
-const _locations = locations.map(calculateItemsRatio);
+import locations from 'assets/json/locations.json';
+const _home_location = locations.filter((location) => { return location.id === "house"; })[0];
+let knownLocationId = 0;
 
 class Store {
   @observable id = 12345;
-  @observable food = 0;
-  @observable medicine = 0;
+  //@observable food = 0;
+  //@observable medicine = 0;
   @observable inventory = new Map();
-  @observable currentLocation = {
-    name: 'location name',
-    description: 'There is nothing interesting here',
-  };
+    @observable currentLocation = null;
+  @observable knownLocations = new Map();
 
-  @action modDescription = (newDescription) => {
-    this.description = newDescription;
+  //@action modFood = (newFood) => {
+  //  this.food = newFood;
+  //};
+  //@action modMeds = (newMeds) => {
+  //  this.medicine = newMeds;
+  //};
+
+  @action addKnownLocation = (location) => {
+      const _location = Object.assign({}, location);
+      _location.inventory = new Map();
+      _location.knownLocationId = knownLocationId;
+    this.knownLocations.set(knownLocationId, _location);
+    knownLocationId++;
   };
-  @action modFood = (newFood) => {
-    this.food = newFood;
-  };
-  @action modMeds = (newMeds) => {
-    this.medicine = newMeds;
-  };
-  @action addToInventory = (item) => {
-    if (this.inventory.has(item.name)) {
-      const addItem = this.inventory.get(item.name);
+  @action addToInventory = (knownLocationId, item) => {
+    const _location = this.knownLocations.get(locationId);
+    if (_location === undefined || _location === null) {
+        return null;
+    }
+    if (_location.inventory.has(item.name)) {
+      const addItem = _location.inventory.get(item.name);
       addItem.quantity++;
     } else {
       item.quantity = 1;
-      this.inventory.set(item.name, item);
+      _location.inventory.set(item.name, item);
     }
   };
-  @action removeFromInventory = (item) => {
+  @action removeFromInventory = (knownLocationId, item) => {
+    const _location = this.knownLocations.get(locationId);
+    if (_location === undefined || _location === null) {
+        return null;
+    }
     if (this.inventory.has(item.name)) {
       const delItem = this.inventory.get(item.name);
       delItem.quantity--;
@@ -73,10 +62,13 @@ class Store {
   };
 
   @computed get inventoryItems() {
-    return toJS(this.inventory);
+    return toJS(this.currentLocation.inventory);
   };
   @computed get location() {
     return toJS(this.currentLocation);
+  }
+  @computed get visibleLocations() {
+    return toJS(this.knownLocations);
   }
 }
 

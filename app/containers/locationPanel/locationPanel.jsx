@@ -11,6 +11,7 @@ import Typography from 'material-ui/Typography';
 @observer
 class LocationPanel extends React.Component {
   render() {
+    if (locationStore.location === null) { return null; }
     const { name, description } = locationStore.location;
     return (
       <Grid item xs={12}>

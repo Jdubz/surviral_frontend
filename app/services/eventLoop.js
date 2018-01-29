@@ -1,5 +1,6 @@
 import { timeStore, playerStore, navStore, actionStore } from '../stores';
 import { getValidActions } from './actionManager';
+import { initialLocations, searchLocation } from './locationManager';
 
 const dayChange = (action) => {
   const lastDay = timeStore.day;
@@ -34,7 +35,9 @@ const triggerLoop = (action) => {
   populateActions();
 };
 
+// create initial state
 populateActions();
+initialLocations();
 module.exports = {
   triggerLoop,
 };
