@@ -13,7 +13,7 @@ class PlayerInventory extends React.Component {
     return (
       <div className="playerInventory-container">
         <Paper className="playerInventory-paper">
-          <Typography type="headline" component="h4">Inventory</Typography>
+          <Typography>Player Inventory</Typography>
           <Typography type="body1">{`Food: ${playerStore.food}`}</Typography>
           <Typography type="body1">{`Meds: ${playerStore.medicine}`}</Typography>
           {Object.values(playerStore.inventoryItems).map(item => {

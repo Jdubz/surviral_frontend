@@ -63,6 +63,8 @@ a {
 /////////////////////
 // Components
 
+@import '../containers/locationPanel/locationInventory';
+@import '../containers/locationPanel/locationPanel';
 @import '../containers/playerInfo/playerInventory';
 @import '../containers/timeView/timeView';
 @import '../containers/pager/pager';

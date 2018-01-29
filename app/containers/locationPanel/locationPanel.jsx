@@ -14,9 +14,7 @@ class LocationPanel extends React.Component {
     const { name } = locationStore.location;
     return (
       <div className="locationPanel-container">
-        <Paper className="locationPanel-paper">
-          <Typography>{name}</Typography>
-        </Paper>
+        <Typography>{name}</Typography>
       </div>
     )
   }

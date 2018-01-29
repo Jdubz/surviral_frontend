@@ -15,7 +15,7 @@ class ActionPanel extends React.Component{
     return (
       <div className="actionPanel-container">
         <Paper className="actionPanel-paper">
-          <Typography type="headline" component="h3">Actions</Typography>
+          <Typography>Actions</Typography>
           {Object.keys(actionStore.currentActions).map((actionName) => {
             return (
               <Button
