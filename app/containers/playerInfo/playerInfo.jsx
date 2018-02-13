@@ -15,10 +15,10 @@ class PlayerInfo extends React.Component {
       <div className="playerInfo-container">
         <Paper className="playerInfo-paper">
           <Typography>Hunger</Typography>
-          <LinearProgress mode="determinate" value={playerStore.hunger} />
+          <LinearProgress variant="determinate" value={playerStore.hunger} />
           <br />
           <Typography>Health</Typography>
-          <LinearProgress mode="determinate" value={playerStore.health} />
+          <LinearProgress variant="determinate" value={playerStore.health} />
         </Paper>
       </div>
     )
