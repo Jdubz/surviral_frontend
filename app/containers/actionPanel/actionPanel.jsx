@@ -19,7 +19,7 @@ class ActionPanel extends React.Component{
           {Object.keys(actionStore.currentActions).map((actionName) => {
             return (
               <Button
-                raised
+                variant="raised"
                 color="primary"
                 key={actionName}
                 onClick={() => {
