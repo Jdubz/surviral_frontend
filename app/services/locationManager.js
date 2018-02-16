@@ -43,6 +43,7 @@ const _travel_location = _locations.filter((location) => { return location.id ==
 const _home_location = locations.filter((location) => { return location.id === "house"; })[0];
 
 const searchLocation = (location) => {
+    console.log(location)
     const rand = Math.random();
     let min = 0.0;
 
@@ -61,10 +62,18 @@ const initialLocations = () => {
     _locations.forEach((location) => {
         locationStore.addKnownLocation(location);
     });
-    locationStore.changeLocation(_home_location);
+    locationStore.changeLocation(1);
+    console.log(locationStore.location)
+};
+
+const findItem = () => {
+    const item = searchLocation(locationStore.location);
+    console.log(location.knownLocationId, item);
+    locationStore.addToInventory(location.knownLocationId, item);
 };
 
 module.exports = {
     searchLocation,
     initialLocations,
+    findItem
 };

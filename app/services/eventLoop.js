@@ -1,6 +1,6 @@
 import { timeStore, playerStore, navStore, actionStore, audioManagerStore } from '../stores';
 import { getValidActions } from './actionManager';
-import { initialLocations, searchLocation } from './locationManager';
+import { initialLocations, searchLocation, findItem } from './locationManager';
 
 const dayChange = (action) => {
   console.log(action.sound);
@@ -31,14 +31,17 @@ const populateActions = () => {
 };
 
 const triggerLoop = (action) => {
-  console.log('action occurs', action);
+    console.log('test');
+  if(action.type === "search") {
+      findItem();
+  }
   dayChange(action);
   populateActions();
 };
 
 // create initial state
-populateActions();
 initialLocations();
+populateActions();
 module.exports = {
   triggerLoop,
 };

@@ -6,17 +6,19 @@ import {
   computed,
 } from 'globalImports';
 
-import locations from 'assets/json/locations.json';
-const _home_location = locations.filter((location) => { return location.id === "house"; })[0];
 let knownLocationId = 0;
+const _empty_location = {
+  inventory: {},
+  name: ""
+};
 
 class Store {
   @observable id = 12345;
   //@observable food = 0;
   //@observable medicine = 0;
   @observable inventory = new Map();
-    @observable currentLocation = null;
   @observable knownLocations = new Map();
+  @observable currentLocation = null;
 
   //@action modFood = (newFood) => {
   //  this.food = newFood;
@@ -33,7 +35,7 @@ class Store {
     knownLocationId++;
   };
   @action addToInventory = (knownLocationId, item) => {
-    const _location = this.knownLocations.get(locationId);
+    const _location = this.knownLocations.get(knownLocationId);
     if (_location === undefined || _location === null) {
         return null;
     }
@@ -46,24 +48,28 @@ class Store {
     }
   };
   @action removeFromInventory = (knownLocationId, item) => {
-    const _location = this.knownLocations.get(locationId);
+    const _location = this.knownLocations.get(knownLocationId);
     if (_location === undefined || _location === null) {
         return null;
     }
-    if (this.inventory.has(item.name)) {
-      const delItem = this.inventory.get(item.name);
+    if (_location.inventory.has(item.name)) {
+      const delItem = _location.inventory.get(item.name);
       delItem.quantity--;
     } else {
-      this.inventory.delete(item.name);
+      _location.inventory.delete(item.name);
     }
   };
-  @action changeLocation = (newLoc) => {
-    this.currentLocation = newLoc;
+  @action changeLocation = (knownLocationId) => {
+      this.currentLocation = this.knownLocations.get(knownLocationId);
+      console.log('currentLocation', toJS(this.currentLocation));
+      return this.currentLocation;
   };
 
+  // TODO: perhaps this doesn't get recomputed when the currentLocation changes?
   @computed get inventoryItems() {
-    if (this.currentLocation === null || this.currentLocation.inventory == undefined) {
-        return {};
+      console.log('inventoryItems', this.currentLocation)
+    if (this.currentLocation === null || this.currentLocation === undefined) {
+      return {};
     };
     return toJS(this.currentLocation.inventory);
   };

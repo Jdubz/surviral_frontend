@@ -60,13 +60,13 @@
     "sound_effect": 0
   },
   {
-    "id": "explore",
-    "name": "Explore",
+    "id": "search",
+    "name": "Search",
     "prereq": "",
     "player_effects": "",
     "time": 0,
     "logs": "",
-    "type": "explore",
+    "type": "search",
     "sound_effect": ""
   },
   {
