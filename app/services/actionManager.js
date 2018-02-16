@@ -1,11 +1,3 @@
-import {
-    observable,
-    action,
-    mobx,
-    toJS,
-    computed,
-} from 'globalImports';
-
 import { playerStore, locationStore, actionStore } from '../stores';
 import actions from 'assets/json/actions.json';
 import items from 'assets/json/items.json';
