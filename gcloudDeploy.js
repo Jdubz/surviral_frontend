@@ -39,11 +39,24 @@ const emptyBucket = (cb) => {
   });
 };
 
+const uploadOptions = {
+  'index.html': { public: true, metadata: { cacheControl: 'no-cache' }},
+  'gz': {
+    public: true,
+    metadata: {
+      cacheControl: 'no-cache',
+      contentEncoding: 'gzip',
+    },
+  },
+};
+
 const uploadDist = () => {
   const distFiles = fs.readdirSync('./dist/');
   distFiles.forEach((file) => {
+    const ext = file.substr(file.lastIndexOf('.') + 1);
+    const options = ext === 'gz' ? uploadOptions['gz'] : uploadOptions[file] || { public: true };
     buckets.forEach((bucket) => {
-      bucket.upload(`./dist/${file}`, { public: true })
+      bucket.upload(`./dist/${file}`, options)
         .then(() => {
           console.log(`uploaded ${file}`);
         })

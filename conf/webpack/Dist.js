@@ -2,14 +2,10 @@
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
 const path = require('path');
 const WebpackBaseConfig = require('./Base');
 const globalConfig = require('../global_config');
-// const S3Plugin = require('webpack-s3-plugin');
-
-// let server = globalConfig.devServer
-const distCdnServer = globalConfig.distCdnServer;
 
 class WebpackDistConfig extends WebpackBaseConfig {
 
@@ -53,22 +49,14 @@ class WebpackDistConfig extends WebpackBaseConfig {
         new webpack.NoEmitOnErrorsPlugin(),
         new HtmlWebpackPlugin({
           template: 'index.ejs',
-          jsfilesource: appUniqueFileName,
+          jsfilesource: appUniqueFileName + '.gz',
           hash: true,
           inject: false
         }),
-        // new ProgressBarPlugin(),
-        //   new S3Plugin({
-        //       // s3Options are required
-        //       s3Options: {
-        //         accessKeyId: process.env.PERSONAL_IAM_ACCESS_KEY,
-        //         secretAccessKey: process.env.PERSONAL_IAM_SECRET,
-        //         region: 'us-west-2'
-        //       },
-        //       s3UploadOptions: {
-        //         Bucket: 'www.animallabs.xyz'
-        //       }
-        //   })
+        new CompressionPlugin({
+          test: /\.js/,
+          deleteOriginalAssets: true,
+        }),
       ],
     }
   }
