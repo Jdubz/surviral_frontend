@@ -18,4 +18,4 @@ class Store {
 
 let timeStore = new Store();
 
-module.exports = timeStore;
+export default timeStore;

@@ -1,54 +1,12 @@
 [
   {
-    "id": "food",
-    "pretty_name": "Food"
+    "id": 1,
+    "name": "Food",
+    "description": "eat me"
   },
   {
-    "id": "water",
-    "pretty_name": "Water"
-  },
-  {
-    "id": "ibuprofen",
-    "pretty_name": "Ibuprofen"
-  },
-  {
-    "id": "coffee",
-    "pretty_name": "Instant Coffee"
-  },
-  {
-    "id": "upper",
-    "pretty_name": "Uppers"
-  },
-  {
-    "id": "bandage",
-    "pretty_name": "Bandage"
-  },
-  {
-    "id": "map",
-    "pretty_name": "Soggy Map"
-  },
-  {
-    "id": "shopping_cart",
-    "pretty_name": "Rusty Shopping Cart"
-  },
-  {
-    "id": "baby_stroller",
-    "pretty_name": "Moldy Baby Stroller"
-  },
-  {
-    "id": "bike",
-    "pretty_name": "Fixey"
-  },
-  {
-    "id": "beer",
-    "pretty_name": "Beer"
-  },
-  {
-    "id": "shoes",
-    "pretty_name": "New Shoes"
-  },
-  {
-    "id": "backpack",
-    "pretty_name": "Man Sachel"
+    "id": 2,
+    "name": "medicine",
+    "description": "fights disease"
   }
 ]

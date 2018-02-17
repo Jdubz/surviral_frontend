@@ -1,26 +1,5 @@
-import { timeStore, playerStore, navStore, actionStore, audioManagerStore } from '../stores';
-import { getValidActions } from './actionManager';
-import { initialLocations, searchLocation, findItem } from './locationManager';
-
-const dayChange = (action) => {
-  console.log(action.sound);
-  const lastDay = timeStore.day;
-  const newDay = timeStore.passTime(action.time);
-  let dayDiff = newDay - lastDay;
-  let healthChange = 0;
-  let hungerChange = 0;
-  if (dayDiff) {
-    for (dayDiff; dayDiff > 0; dayDiff--) {
-      healthChange += playerStore.healthMod;
-      hungerChange += playerStore.hungerMod;
-    }
-  }
-  playerStore.modHealth(healthChange);
-  playerStore.modHunger(hungerChange);
-  if (playerStore.health < 1 || playerStore.hunger < 1) {
-    navStore.changePage('dead');
-  }
-};
+import { timeStore, playerStore, actionStore, audioStore } from '../stores';
+import { executeAction } from './actionManager';
 
 const populateActions = () => {
   const availableActions = getValidActions();
