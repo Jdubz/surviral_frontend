@@ -20,4 +20,4 @@ class LogStore {
 
 let logStore = new LogStore();
 
-module.exports = logStore;
+export default logStore;

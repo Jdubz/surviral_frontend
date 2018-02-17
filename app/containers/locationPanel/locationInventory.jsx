@@ -13,6 +13,7 @@ class LocationInventory extends React.Component {
     return (
       <div className="locationInventory-container">
         <Paper className="locationInventory-paper">
+          <Typography>Location Inventory</Typography>
           {Object.values(locationStore.inventoryItems).map(item => {
             return (
               <Typography

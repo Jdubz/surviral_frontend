@@ -1,7 +1,6 @@
 import {
     observable,
     action,
-    mobx,
     computed
 } from 'globalImports';
 
@@ -35,4 +34,4 @@ class AudioManagerStore {
 
 const audioManagerStore = new AudioManagerStore();
 
-module.exports = audioManagerStore;
+export default audioManagerStore;

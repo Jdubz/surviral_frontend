@@ -6,9 +6,8 @@ import {
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
-import { navStore, logStore, actionStore, locationStore } from '../../stores';
-import eventLoop from '../../services/eventLoop';
-import { searchLocation } from '../../services/locationManager';
+import { actionStore } from '../../stores';
+import { executeAction } from '../../services/actionManager';
 
 @observer
 class ActionPanel extends React.Component{
@@ -17,21 +16,17 @@ class ActionPanel extends React.Component{
       <div className="actionPanel-container">
         <Paper className="actionPanel-paper">
           <Typography>Actions</Typography>
-          {Object.keys(actionStore.currentActions).map((actionName) => {
+          {Object.keys(actionStore.currentActions).map((actionId) => {
             return (
               <Button
                 variant="raised"
                 color="primary"
-                key={actionName}
+                key={actionId}
                 onClick={() => {
-                  const action = actionStore.currentActions[actionName];
-                  console.log('action onclick', action);
-
-                  logStore.addEntry(action.logs);
-                  eventLoop.triggerLoop(action);
+                  executeAction(actionStore.currentActions[actionId]);
                 }}>
-                {actionName}
-              </Button>)
+                {actionStore.currentActions[actionId].name}
+              </Button>);
           })}
         </Paper>
       </div>
