@@ -1,15 +1,23 @@
 import locationStore from './locationStore';
 import playerStore from './playerStore';
 import logStore from './logStore';
-import actionStore from './actionStore';
 import timeStore from './timeStore';
 import audioStore from './audioManagerStore';
+import itemStore from './itemStore';
+import actionStore from './actionStore';
 
-module.exports = {
+itemStore.populateItems();
+locationStore.populateLocations();
+actionStore.populateBank();
+
+// actionStore.populateAvailable();
+
+export {
   audioStore,
   locationStore,
   playerStore,
   logStore,
   actionStore,
   timeStore,
+  itemStore,
 };

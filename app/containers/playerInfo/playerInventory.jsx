@@ -14,8 +14,6 @@ class PlayerInventory extends React.Component {
       <div className="playerInventory-container">
         <Paper className="playerInventory-paper">
           <Typography>Player Inventory</Typography>
-          <Typography type="body1">{`Food: ${playerStore.food}`}</Typography>
-          <Typography type="body1">{`Meds: ${playerStore.medicine}`}</Typography>
           {Object.values(playerStore.inventoryItems).map(item => {
             return <Typography key={item.name}>{item.name}</Typography>;
           })}

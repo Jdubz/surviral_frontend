@@ -1,44 +1,49 @@
 [
   {
-    "id": "supermarket",
+    "id": 1,
     "name": "Supermarket",
-    "items": "food:5,water:5,shopping_cart:1,beer:2",
-    "supplies": 3,
-    "": ""
+    "description": "You're pretty sure there's food here",
+    "itemChance": {
+      "1": {
+        "id": 1,
+        "chance": 80,
+        "amount": 5
+      },
+      "2": {
+        "id": 2,
+        "chance": 10,
+        "amount": 1
+      }
+    },
+    "image": ""
   },
   {
-    "id": "drug_store",
+    "id": 2,
     "name": "Drug Store",
-    "items": "ibuprofen:2,bandage:1,uppers:1",
-    "supplies": 3,
-    "": ""
+    "itemChance": {
+      "2": {
+        "id": 2,
+        "chance": 80,
+        "amount": 3
+      }
+    },
+    "image": ""
   },
   {
-    "id": "home",
-    "name": "A Cramped Hovel",
-    "items": "",
-    "supplies": 1,
-    "": ""
-  },
-  {
-    "id": "convience_store",
-    "name": "Convience Store",
-    "items": "food:2,water:2,ibuprofen:1,beer:1",
-    "supplies": 2,
-    "": ""
-  },
-  {
-    "id": "house",
+    "id": 3,
     "name": "Pristinely Destroyed House",
-    "items": "bike:1,shoes:1",
-    "supplies": 1,
-    "": ""
-  },
-  {
-    "id": "wasteland",
-    "name": "The Empty Expanses of the Destroyed East Bay",
-    "items": "bike:1,shoes:1",
-    "supplies": 0,
-    "": ""
+    "itemChance": {
+      "1": {
+        "id": 1,
+        "chance": 50,
+        "amount": 2
+      },
+      "2": {
+        "id": 2,
+        "chance": 10,
+        "amount": 1
+      }
+    },
+    "image": ""
   }
 ]

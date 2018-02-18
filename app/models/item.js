@@ -1,11 +1,11 @@
 class Item {
-  constructor(item) {
+  constructor(item, quantity) {
     this.id = item.id;
-    this.quantity = item.quantity;
+    this.quantity = quantity;
     this.name = item.name;
     this.description = item.description;
-    this.useAction = item.useAction;
     this.image = item.image;
+    this.weight = item.weight;
   }
 }
 

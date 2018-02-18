@@ -9,6 +9,7 @@ import { Item } from '../models';
 class Store {
   @observable hunger = 100;
   @observable disease = 100;
+  @observable carryingCapacity = 80;
   @observable inventory = new Map();
 
   @action modInventory = (item) => {

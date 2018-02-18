@@ -5,9 +5,26 @@ import {
   computed,
 } from 'globalImports';
 import { Location } from '../models';
+import locations from 'assets/json/locations';
+
+const emptyLocation = {
+  id: 0,
+  name: 'Nowhere',
+  description: 'There\'s nothing here',
+  inventory: new Map(),
+  itemChance: {},
+  image: '',
+};
 
 class Store {
-  @observable currentLocation = null;
+  @observable allLocations = new Map();
+  @observable currentLocation = new Location(emptyLocation);
+
+  @action populateLocations = () => {
+    locations.forEach(loc => {
+      this.allLocations.set(loc.id, new Location(loc));
+    })
+  };
 
   @action takeItem = (itemId) => {
 

@@ -2,7 +2,6 @@ import {
   observable,
   computed,
   action,
-  mobx,
   toJS,
 } from 'globalImports';
 
