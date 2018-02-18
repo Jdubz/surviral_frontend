@@ -7,7 +7,7 @@ import {
 import { Action } from '../models';
 import actions from 'assets/json/actions.json';
 
-class Store {
+class ActionStore {
   @observable availableActions = new Map();
   @observable actionBank = new Map();
 
@@ -33,6 +33,4 @@ class Store {
   }
 }
 
-const actionStore = new Store();
-
-export default actionStore;
+export default ActionStore;

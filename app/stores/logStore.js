@@ -17,6 +17,4 @@ class LogStore {
   };
 }
 
-let logStore = new LogStore();
-
-export default logStore;
+export default LogStore;

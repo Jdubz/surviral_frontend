@@ -32,6 +32,4 @@ class AudioManagerStore {
     };
 }
 
-const audioManagerStore = new AudioManagerStore();
-
-export default audioManagerStore;
+export default AudioManagerStore;

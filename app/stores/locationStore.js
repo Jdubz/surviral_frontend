@@ -16,31 +16,35 @@ const emptyLocation = {
   image: '',
 };
 
-class Store {
+class LocationStore {
   @observable allLocations = new Map();
   @observable currentLocation = new Location(emptyLocation);
+  @observable inventory = new Map();
 
   @action populateLocations = () => {
     locations.forEach(loc => {
       this.allLocations.set(loc.id, new Location(loc));
     })
   };
-
-  @action takeItem = (itemId) => {
-
+  @action searchLocation = () => {
+    this.currentLocation.search();
+    this.inventory = this.currentLocation.inventory;
   };
+
   @action setCurrentLocation = (location) => {
-    this.currentLocation = new Location(location);
+    this.currentLocation = location;
+    this.inventory = location.inventory;
   };
-
+  @action newLocation = () => {
+    const newLocId = Math.ceil(Math.random() * this.allLocations.size);
+    this.setCurrentLocation(this.allLocations.get(newLocId));
+  };
   @computed get inventoryItems() {
-    return toJS(this.currentLocation.inventory);
+    return toJS(this.inventory);
   };
   @computed get location() {
     return toJS(this.currentLocation);
   }
 }
 
-let locationStore = new Store();
-
-export default locationStore;
+export default LocationStore;

@@ -6,7 +6,7 @@ import {
 } from 'globalImports';
 import items from 'assets/json/items';
 
-class Store {
+class ItemStore {
   @observable allItems = new Map();
 
   @action populateItems = () => {
@@ -19,6 +19,4 @@ class Store {
   }
 }
 
-const itemStore = new Store();
-
-export default itemStore;
+export default ItemStore;

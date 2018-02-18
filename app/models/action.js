@@ -17,6 +17,17 @@ const inventoryMod = (item, qty) => {
 
 };
 
+const locationMods = {
+  new: () => locationStore.newLocation(),
+  search: () => locationStore.searchLocation(),
+};
+
+const mods = {
+  items: (items) => console.log(items),
+  player: (player) => console.log(player),
+  location: (loc) => locationMods[loc](),
+};
+
 class Action {
   constructor(action) {
     this.id = action.id;
@@ -39,7 +50,9 @@ class Action {
   }
 
   execute() {
-    console.log(this.name);
+    Object.keys(this.modifiers).forEach(type => {
+      mods[type](this.modifiers[type]);
+    });
   }
 }
 

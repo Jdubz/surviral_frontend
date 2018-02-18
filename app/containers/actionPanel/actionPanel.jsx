@@ -18,16 +18,19 @@ class ActionPanel extends React.Component{
         <Paper className="actionPanel-paper">
           <Typography>Actions</Typography>
           {Object.values(actionStore.currentActions).map((action) => {
-            console.log(action);
             return (
-              <Button
-                variant="raised"
-                color="primary"
+              <div
+                className={'actionButton-wrapper'}
                 key={action.id}
-                onClick={ () => action.execute() }
               >
-                {action.name}
-              </Button>);
+                <Button
+                  variant="raised"
+                  color="primary"
+                  onClick={ () => action.execute() }
+                >
+                  {action.name}
+                </Button>
+              </div>);
           })}
         </Paper>
       </div>

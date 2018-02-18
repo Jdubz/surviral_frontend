@@ -3,7 +3,7 @@ import {
   action,
 } from 'globalImports';
 
-class Store {
+class TimeStore {
   @observable masterTime = 0;
   @observable day = 0;
   @observable hour = 0;
@@ -16,6 +16,4 @@ class Store {
   }
 }
 
-let timeStore = new Store();
-
-export default timeStore;
+export default TimeStore;

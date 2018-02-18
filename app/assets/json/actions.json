@@ -9,7 +9,10 @@
     },
     "modifiers": {
       "player": { "hunger": 20 },
-      "items": { "1": -1 }
+      "items": { "1":{
+        "id": 1,
+        "quantity": -1
+      }}
     },
     "time": 0.5,
     "logs": "Do you remember the last hot meal you had?",
@@ -19,7 +22,7 @@
     "id": 2,
     "name": "Search",
     "prereq": {},
-    "modifiers": {},
+    "modifiers": { "location": "search" },
     "time": 1,
     "logs": "you look around for anything useful",
     "sound_effect": 0
@@ -34,7 +37,10 @@
     },
     "modifiers": {
       "player": { "disease": 20 },
-      "items": { "2": -1 }
+      "items": { "2": {
+        "id": 2,
+        "quantity": -1
+      }}
     },
     "time": 0.5,
     "logs": "you feel the virus fade away",

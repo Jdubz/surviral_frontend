@@ -2,7 +2,7 @@ import { Item } from 'models';
 import { itemStore } from 'stores';
 
 const roll = (check) => {
-  return (Math.ceil(Math.random() * 100)) > check;
+  return (Math.ceil(Math.random() * 100)) < check;
 };
 const qty = (amount) => {
   return Math.ceil(Math.random() * amount);
@@ -21,6 +21,8 @@ class Location {
   addToInventory(item) {
     if (this.inventory.has(item.id)) {
       item.quantity += this.inventory.get(item.id).quantity;
+      this.inventory.set(item.id, item);
+    } else {
       this.inventory.set(item.id, item);
     }
   }
