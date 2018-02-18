@@ -1,4 +1,5 @@
-import { playerStore, locationStore } from 'stores';
+import { playerStore, locationStore, logStore } from 'stores';
+import { eventLoop } from 'services/eventLoop';
 
 const allInventory = () => {
   const totalItems = Object.assign({}, playerStore.inventoryItems);
@@ -13,8 +14,8 @@ const allInventory = () => {
   return totalItems;
 };
 
-const inventoryMod = (item, qty) => {
-
+const inventoryMod = (itemId, qty) => {
+  
 };
 
 const locationMods = {
@@ -23,8 +24,12 @@ const locationMods = {
 };
 
 const mods = {
-  items: (items) => console.log(items),
-  player: (player) => console.log(player),
+  items: (items) => {
+    Object.values(items).forEach(item => {
+      inventoryMod(item.id, item.quantity);
+    });
+  },
+  player: (player) => playerStore.modPlayer(player),
   location: (loc) => locationMods[loc](),
 };
 
@@ -53,6 +58,8 @@ class Action {
     Object.keys(this.modifiers).forEach(type => {
       mods[type](this.modifiers[type]);
     });
+    logStore.addEntry(this.logs);
+    eventLoop(this.time);
   }
 }
 

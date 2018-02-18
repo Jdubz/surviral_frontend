@@ -4,12 +4,15 @@
     "name": "Eat Food",
     "prereq": {
       "items": {
-        "1": { "quantity": 1 }
+        "1": {
+          "id": 1,
+          "quantity": 1
+        }
       }
     },
     "modifiers": {
       "player": { "hunger": 20 },
-      "items": { "1":{
+      "items": { "1": {
         "id": 1,
         "quantity": -1
       }}
@@ -32,7 +35,10 @@
     "name": "Take Meds",
     "prereq": {
       "items": {
-        "2": { "quantity": 1 }
+        "2": {
+          "id": 2,
+          "quantity": 1
+        }
       }
     },
     "modifiers": {

@@ -5,7 +5,7 @@ import {
 
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import { locationStore } from '../../stores';
+import { locationStore } from 'stores';
 
 @observer
 class LocationInventory extends React.Component {

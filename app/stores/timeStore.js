@@ -12,7 +12,6 @@ class TimeStore {
     this.masterTime += inc;
     this.day = Math.floor(this.masterTime / 24);
     this.hour = this.masterTime % 24;
-    return this.day;
   }
 }
 

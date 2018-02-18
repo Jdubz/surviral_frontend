@@ -6,7 +6,7 @@ import {
 } from 'globalImports';
 
 class LogStore {
-  @observable logEntries = new Array();
+  @observable logEntries = [];
 
   @action addEntry = (entry) => {
     this.logEntries.push(entry);
