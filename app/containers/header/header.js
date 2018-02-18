@@ -4,7 +4,7 @@ import {
 } from 'globalImports';
 
 import {
-  audioManagerStore,
+  audioStore,
 } from '../../stores';
 
 import audioManager from '../../services/audioManager';
@@ -26,13 +26,13 @@ class MyMenu extends React.Component {
           <Typography type="title" color="inherit" className="header-title">
             SurViral
           </Typography>
-          <span>{audioManagerStore.isMuted}</span>
+          <span>{audioStore.isMuted}</span>
           <IconButton
             className="header-volume-toggle"
-            onClick={audioManagerStore.isMuted ? () => audioManagerStore.unmute() : () => audioManagerStore.mute()}
+            onClick={audioStore.isMuted ? () => audioStore.unmute() : () => audioStore.mute()}
             color="inherit"
           >
-            {audioManagerStore.isMuted ?
+            {audioStore.isMuted ?
               <VolumeMute />
             :
               <VolumeUp />

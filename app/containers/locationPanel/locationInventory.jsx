@@ -10,14 +10,17 @@ import { locationStore } from '../../stores';
 @observer
 class LocationInventory extends React.Component {
   render() {
+    const { inventoryItems } = locationStore;
+    console.log(inventoryItems);
     return (
       <div className="locationInventory-container">
         <Paper className="locationInventory-paper">
-          {Object.values(locationStore.inventoryItems).map(item => {
+          <Typography>Location Inventory</Typography>
+          {Object.values(inventoryItems).map(item => {
             return (
               <Typography
                 key={item.name}
-              >{item.name}</Typography>
+              >{`${item.quantity} : ${item.name}`}</Typography>
             );
           })}
         </Paper>

@@ -6,9 +6,9 @@ import {
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
-import { navStore, logStore, actionStore, locationStore } from '../../stores';
-import eventLoop from '../../services/eventLoop';
-import { searchLocation } from '../../services/locationManager';
+import { actionStore } from '../../stores';
+
+actionStore.populateAvailable();
 
 @observer
 class ActionPanel extends React.Component{
@@ -17,21 +17,20 @@ class ActionPanel extends React.Component{
       <div className="actionPanel-container">
         <Paper className="actionPanel-paper">
           <Typography>Actions</Typography>
-          {Object.keys(actionStore.currentActions).map((actionName) => {
+          {Object.values(actionStore.currentActions).map((action) => {
             return (
-              <Button
-                variant="raised"
-                color="primary"
-                key={actionName}
-                onClick={() => {
-                  const action = actionStore.currentActions[actionName];
-                  console.log('action onclick', action);
-
-                  logStore.addEntry(action.logs);
-                  eventLoop.triggerLoop(action);
-                }}>
-                {actionName}
-              </Button>)
+              <div
+                className={'actionButton-wrapper'}
+                key={action.id}
+              >
+                <Button
+                  variant="raised"
+                  color="primary"
+                  onClick={ () => action.execute() }
+                >
+                  {action.name}
+                </Button>
+              </div>);
           })}
         </Paper>
       </div>

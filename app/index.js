@@ -8,7 +8,7 @@ import DevTools from 'mobx-react-devtools';
 // components
 import Header from 'containers/header/header';
 import MyFooter from 'containers/footer/footer';
-import Pager from 'containers/pager/pager';
+import HomePage from 'containers/homepage/homepage';
 
 // styles import. It needs to be in the project somewhere once
 import styles from 'styles/app.scss';
@@ -20,9 +20,14 @@ es6Promise.polyfill();
 render(
     <div className="app-container">
       <Header />
-      <Pager />
+      <HomePage />
       <MyFooter />
-      <DevTools />
+      {(() => {
+        if (config.appEnv === 'dev') {
+          return <DevTools />;
+        }
+        return null;
+      })()}
     </div>
   , document.getElementById('mount')
 );

@@ -1,48 +1,24 @@
 import {
   observable,
   action,
-  mobx,
   toJS,
   computed,
 } from 'globalImports';
+import { Item } from '../models';
 
-class Store {
-  @observable hungerMod = -10;
-  @observable healthMod = -10;
+class PlayerStore {
   @observable hunger = 100;
-  @observable health = 100;
-  @observable food = 0;
-  @observable medicine = 0;
+  @observable disease = 100;
+  @observable carryingCapacity = 80;
   @observable inventory = new Map();
-  @observable moveSpeed = 1;
 
-  @action modHunger = (newHunger) => {
-    this.hunger += newHunger;
-  };
-  @action modHealth = (newHealth) => {
-    this.health += newHealth;
-  };
-  @action modFood = (newFood) => {
-    this.food = newFood;
-  };
-  @action modMeds = (newMeds) => {
-    this.medicine = newMeds;
-  };
-  @action addToInventory = (item) => {
-    if (this.inventory.has(item.name)) {
-      const addItem = this.inventory.get(item.name);
-      addItem.quantity++;
+  @action modInventory = (item) => {
+    if (this.inventory.has(item.id)) {
+      const Item = this.inventory.get(item.id);
+      Item.quantity += item.quantity;
+      this.inventory.set(item.id, Item);
     } else {
-      item.quantity = 1;
-      this.inventory.set(item.name, item);
-    }
-  };
-  @action removeFromInventory = (item) => {
-    if (this.inventory.has(item.name)) {
-      const delItem = this.inventory.get(item.name);
-      delItem.quantity--;
-    } else {
-      this.inventory.delete(item);
+      this.inventory.set(item.id, new Item(item));
     }
   };
 
@@ -51,6 +27,4 @@ class Store {
   };
 }
 
-let playerStore = new Store();
-
-module.exports = playerStore;
+export default PlayerStore;

@@ -2,7 +2,6 @@ import {
   observable,
   computed,
   action,
-  mobx,
   toJS,
 } from 'globalImports';
 
@@ -18,6 +17,4 @@ class LogStore {
   };
 }
 
-let logStore = new LogStore();
-
-module.exports = logStore;
+export default LogStore;
