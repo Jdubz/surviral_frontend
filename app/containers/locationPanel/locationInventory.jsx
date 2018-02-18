@@ -11,7 +11,6 @@ import { locationStore } from '../../stores';
 class LocationInventory extends React.Component {
   render() {
     const { inventoryItems } = locationStore;
-    console.log(inventoryItems);
     return (
       <div className="locationInventory-container">
         <Paper className="locationInventory-paper">
