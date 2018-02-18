@@ -17,8 +17,8 @@ class PlayerInfo extends React.Component {
           <Typography>Hunger</Typography>
           <LinearProgress variant="determinate" value={playerStore.hunger} />
           <br />
-          <Typography>Health</Typography>
-          <LinearProgress variant="determinate" value={playerStore.health} />
+          <Typography>Virus</Typography>
+          <LinearProgress variant="determinate" value={playerStore.disease} />
         </Paper>
       </div>
     )

@@ -6,9 +6,10 @@ import {
 } from 'globalImports';
 import { Item } from '../models';
 
-class Store {
+class PlayerStore {
   @observable hunger = 100;
   @observable disease = 100;
+  @observable carryingCapacity = 80;
   @observable inventory = new Map();
 
   @action modInventory = (item) => {
@@ -26,6 +27,4 @@ class Store {
   };
 }
 
-let playerStore = new Store();
-
-export default playerStore;
+export default PlayerStore;

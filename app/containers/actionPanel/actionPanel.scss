@@ -6,7 +6,11 @@
   padding: 0.5rem;
 }
 
-.actionPanel-paper > * {
-  width: 10rem;
+.actionButton-wrapper {
   margin: 0.5rem 0;
+  width: 10rem;
+}
+
+.actionButton-wrapper > * {
+  width: 100%;
 }

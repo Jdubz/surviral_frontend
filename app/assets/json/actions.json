@@ -4,14 +4,15 @@
     "name": "Eat Food",
     "prereq": {
       "items": {
-        "1": {
-          "quantity": 1,
-          "destroy": true
-        }
+        "1": { "quantity": 1 }
       }
     },
     "modifiers": {
-      "hunger": 20
+      "player": { "hunger": 20 },
+      "items": { "1":{
+        "id": 1,
+        "quantity": -1
+      }}
     },
     "time": 0.5,
     "logs": "Do you remember the last hot meal you had?",
@@ -21,7 +22,7 @@
     "id": 2,
     "name": "Search",
     "prereq": {},
-    "modifiers": {},
+    "modifiers": { "location": "search" },
     "time": 1,
     "logs": "you look around for anything useful",
     "sound_effect": 0
@@ -31,17 +32,27 @@
     "name": "Take Meds",
     "prereq": {
       "items": {
-        "2": {
-          "quantity": 1,
-          "destroy": true
-        }
+        "2": { "quantity": 1 }
       }
     },
     "modifiers": {
-      "disease": 20
+      "player": { "disease": 20 },
+      "items": { "2": {
+        "id": 2,
+        "quantity": -1
+      }}
     },
     "time": 0.5,
     "logs": "you feel the virus fade away",
+    "sound_effect": 0
+  },
+  {
+    "id": 4,
+    "name": "Explore",
+    "prereq": {},
+    "modifiers": { "location": "new" },
+    "time": 3,
+    "logs": "You set off looking for new digs",
     "sound_effect": 0
   }
 ]

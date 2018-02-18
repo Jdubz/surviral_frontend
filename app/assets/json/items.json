@@ -2,11 +2,15 @@
   {
     "id": 1,
     "name": "Food",
-    "description": "eat me"
+    "description": "eat me",
+    "weight": 1,
+    "image": ""
   },
   {
     "id": 2,
     "name": "medicine",
-    "description": "fights disease"
+    "description": "fights disease",
+    "weight": 0.5,
+    "image": ""
   }
 ]

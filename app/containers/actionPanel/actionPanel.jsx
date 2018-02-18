@@ -7,7 +7,8 @@ import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import { actionStore } from '../../stores';
-import { executeAction } from '../../services/actionManager';
+
+actionStore.populateAvailable();
 
 @observer
 class ActionPanel extends React.Component{
@@ -16,17 +17,20 @@ class ActionPanel extends React.Component{
       <div className="actionPanel-container">
         <Paper className="actionPanel-paper">
           <Typography>Actions</Typography>
-          {Object.keys(actionStore.currentActions).map((actionId) => {
+          {Object.values(actionStore.currentActions).map((action) => {
             return (
-              <Button
-                variant="raised"
-                color="primary"
-                key={actionId}
-                onClick={() => {
-                  executeAction(actionStore.currentActions[actionId]);
-                }}>
-                {actionStore.currentActions[actionId].name}
-              </Button>);
+              <div
+                className={'actionButton-wrapper'}
+                key={action.id}
+              >
+                <Button
+                  variant="raised"
+                  color="primary"
+                  onClick={ () => action.execute() }
+                >
+                  {action.name}
+                </Button>
+              </div>);
           })}
         </Paper>
       </div>

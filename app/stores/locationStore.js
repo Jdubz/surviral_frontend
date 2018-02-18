@@ -5,25 +5,46 @@ import {
   computed,
 } from 'globalImports';
 import { Location } from '../models';
+import locations from 'assets/json/locations';
 
-class Store {
-  @observable currentLocation = null;
+const emptyLocation = {
+  id: 0,
+  name: 'Nowhere',
+  description: 'There\'s nothing here',
+  inventory: new Map(),
+  itemChance: {},
+  image: '',
+};
 
-  @action takeItem = (itemId) => {
+class LocationStore {
+  @observable allLocations = new Map();
+  @observable currentLocation = new Location(emptyLocation);
+  @observable inventory = new Map();
 
+  @action populateLocations = () => {
+    locations.forEach(loc => {
+      this.allLocations.set(loc.id, new Location(loc));
+    })
   };
+  @action searchLocation = () => {
+    this.currentLocation.search();
+    this.inventory = this.currentLocation.inventory;
+  };
+
   @action setCurrentLocation = (location) => {
-    this.currentLocation = new Location(location);
+    this.currentLocation = location;
+    this.inventory = location.inventory;
   };
-
+  @action newLocation = () => {
+    const newLocId = Math.ceil(Math.random() * this.allLocations.size);
+    this.setCurrentLocation(this.allLocations.get(newLocId));
+  };
   @computed get inventoryItems() {
-    return toJS(this.currentLocation.inventory);
+    return toJS(this.inventory);
   };
   @computed get location() {
     return toJS(this.currentLocation);
   }
 }
 
-let locationStore = new Store();
-
-export default locationStore;
+export default LocationStore;
