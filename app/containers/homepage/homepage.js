@@ -16,7 +16,7 @@ import { playerStore } from "stores";
 @observer
 class HomePage extends React.Component {
   render() {
-    if (playerStore.hunger <= 0 || playerStore.disease <= 0) {
+    if (playerStore.state === 'dead') {
       return <DeathNotice />
     }
     return (<div className="homepage-container">

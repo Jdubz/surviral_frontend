@@ -1,21 +1,34 @@
-import { playerStore, locationStore, logStore } from 'stores';
+import { playerStore, locationStore, logStore, itemStore } from 'stores';
 import { eventLoop } from 'services/eventLoop';
 
 const allInventory = () => {
-  const totalItems = Object.assign({}, playerStore.inventoryItems);
-  const locationItems = locationStore.inventoryItems;
-  Object.values(locationItems).forEach(item => {
+  const totalItems = {};
+  Object.values(playerStore.inventoryItems).forEach(item => {
+    totalItems[item.id] = item.quantity;
+  });
+  Object.values(locationStore.inventoryItems).forEach(item => {
     if (totalItems[item.id]) {
-      totalItems[item.id].quantity += item.quantity;
+      totalItems[item.id] += item.quantity;
     } else {
-      totalItems[item.id] = item;
+      totalItems[item.id] = item.quantity;
     }
   });
   return totalItems;
 };
 
-const inventoryMod = (itemId, qty) => {
-  
+const removeFromInventories = (itemId, qty) => {
+  if (locationStore.inventoryItems[itemId]) {
+    const remaining = locationStore.deleteFromInventory(itemId, qty);
+    if (remaining < 0) {
+      playerStore.deleteFromInventory(itemId, qty);
+    }
+  } else {
+    playerStore.deleteFromInventory(itemId, qty);
+  }
+};
+
+const addToInventory = (itemId, qty) => {
+  playerStore.addToInventory(itemStore.getItem(itemId).create(qty));
 };
 
 const locationMods = {
@@ -26,7 +39,11 @@ const locationMods = {
 const mods = {
   items: (items) => {
     Object.values(items).forEach(item => {
-      inventoryMod(item.id, item.quantity);
+      if (item.quantity < 0) {
+        removeFromInventories(item.id, item.quantity);
+      } else {
+        addToInventory(item.id, item.quantity);
+      }
     });
   },
   player: (player) => playerStore.modPlayer(player),
@@ -48,7 +65,7 @@ class Action {
     const items = allInventory();
     if (this.prereq.items) {
       return Object.values(this.prereq.items).reduce((accum, current) => {
-        return (items[current.id] && items[current.id].quantity > current.quantity) && accum;
+        return (items[current.id] && items[current.id] >= current.quantity) && accum;
       }, true);
     }
     return true;

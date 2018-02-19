@@ -20,21 +20,24 @@ class Location {
 
   addToInventory(item) {
     if (this.inventory.has(item.id)) {
-      item.quantity += this.inventory.get(item.id).quantity;
-      this.inventory.set(item.id, item);
+      this.inventory.get(item.id).modStack(item.quantity);
     } else {
       this.inventory.set(item.id, item);
     }
   }
-
-  takeFromInventory(item) {
-    const thisItem = this.inventory.get(item.id);
-    if (thisItem.quantity === 1) {
-      this.inventory.delete(item.id);
-    } else {
-      thisItem.quantity += -1;
-      this.inventory.set(thisItem.id, thisItem);
+  takeFromInventory(itemId, qty) {
+    const takenItems = this.inventory.get(itemId).split(qty);
+    if (this.inventory.get(itemId) <= 0) {
+      this.inventory.delete(itemId);
     }
+    return takenItems;
+  }
+  deleteFromInventory(itemId, qty) {
+    const qtyLeft = this.inventory.get(itemId).modStack(qty);
+    if (qtyLeft <= 0) {
+      this.inventory.delete(itemId);
+    }
+    return qtyLeft;
   }
 
   search() {

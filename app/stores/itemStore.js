@@ -2,8 +2,8 @@ import {
   observable,
   action,
   toJS,
-  computed,
 } from 'globalImports';
+import { Item } from 'models';
 import items from 'assets/json/items';
 
 class ItemStore {
@@ -11,7 +11,7 @@ class ItemStore {
 
   @action populateItems = () => {
     items.forEach(item => {
-      this.allItems.set(item.id, item);
+      this.allItems.set(item.id, new Item(item, 0));
     })
   };
   @action getItem(id) {

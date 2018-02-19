@@ -30,6 +30,20 @@ class LocationStore {
     this.currentLocation.search();
     this.inventory = this.currentLocation.inventory;
   };
+  @action addToInventory = (item) => {
+    this.currentLocation.addToInventory(item);
+    this.inventory = this.currentLocation.inventory;
+  };
+  @action deleteFromInventory = (itemId, qty) => {
+    const newQty = this.currentLocation.deleteFromInventory(itemId, qty);
+    this.inventory = this.currentLocation.inventory;
+    return newQty;
+  };
+  @action takeFromInventory = (itemId, qty) => {
+    const item = this.currentLocation.takeFromInventory(itemId, qty);
+    this.inventory = this.currentLocation.inventory;
+    return item;
+  };
 
   @action setCurrentLocation = (location) => {
     this.currentLocation = location;
@@ -39,6 +53,7 @@ class LocationStore {
     const newLocId = Math.ceil(Math.random() * this.allLocations.size);
     this.setCurrentLocation(this.allLocations.get(newLocId));
   };
+
   @computed get inventoryItems() {
     return toJS(this.inventory);
   };

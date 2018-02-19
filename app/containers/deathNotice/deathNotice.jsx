@@ -5,7 +5,7 @@ import {
 class DeathNotice extends React.Component {
   render() {
     return (
-      <div>
+      <div className={'deathNotice-container'}>
         <h1>YOU'RE DEAD!</h1>
       </div>
     );
