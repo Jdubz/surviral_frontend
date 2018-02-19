@@ -5,3 +5,20 @@
 .playerInventory-paper {
   padding: 0.5rem;
 }
+
+.itemCard-container {
+  width: 100%;
+}
+
+.itemCard-btn {
+  width: 100%;
+}
+
+.itemCard-innerBtn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  p {
+    margin: 0;
+  }
+}

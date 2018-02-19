@@ -40,7 +40,10 @@ class PlayerStore {
 
   @action addToInventory = (item) => {
     if (this.inventory.has(item.id)) {
-      this.inventory.get(item.id).modStack(item.quantity);
+      const addItem = this.inventory.get(item.id);
+      addItem.modStack(item.quantity);
+      this.inventory.delete(item.id);
+      this.inventory.set(item.id, addItem);
     } else {
       this.inventory.set(item.id, item);
     }
@@ -49,6 +52,10 @@ class PlayerStore {
     const newQty = this.inventory.get(itemId).modStack(qty);
     if (newQty <= 0) {
       this.inventory.delete(itemId);
+    } else {
+      const triggerObs = this.inventory.get(itemId);
+      this.inventory.delete(itemId);
+      this.inventory.set(triggerObs.id, triggerObs);
     }
     return newQty;
   };
@@ -56,6 +63,10 @@ class PlayerStore {
     const item = this.inventory.get(itemId).split(qty);
     if (this.inventory.get(itemId).quantity <= 0) {
       this.inventory.delete(itemId);
+    } else {
+      const triggerObs = this.inventory.get(itemId);
+      this.inventory.delete(itemId);
+      this.inventory.set(triggerObs.id, triggerObs);
     }
     return item;
   };

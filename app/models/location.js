@@ -27,7 +27,7 @@ class Location {
   }
   takeFromInventory(itemId, qty) {
     const takenItems = this.inventory.get(itemId).split(qty);
-    if (this.inventory.get(itemId) <= 0) {
+    if (this.inventory.get(itemId).quantity <= 0) {
       this.inventory.delete(itemId);
     }
     return takenItems;

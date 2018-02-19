@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Supermarket",
-    "description": "You're pretty sure there's food here",
+    "description": "You can smell the spam already.",
     "itemChance": {
       "1": {
         "id": 1,
@@ -20,6 +20,7 @@
   {
     "id": 2,
     "name": "Drug Store",
+    "description": "There better be some medicine here!",
     "itemChance": {
       "2": {
         "id": 2,
@@ -32,6 +33,7 @@
   {
     "id": 3,
     "name": "Pristinely Destroyed House",
+    "description": "No good for shelter, but there might be something usable here.",
     "itemChance": {
       "1": {
         "id": 1,

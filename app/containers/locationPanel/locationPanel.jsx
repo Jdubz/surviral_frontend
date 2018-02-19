@@ -5,15 +5,17 @@ import {
 
 import { locationStore } from '../../stores';
 import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
 
 @observer
 class LocationPanel extends React.Component {
   render() {
-    const { name } = locationStore.location;
+    const { name, description } = locationStore.location;
     return (
       <div className="locationPanel-container">
-        <Typography>{name}</Typography>
+        <Paper className={'locationPanel-paper'}>
+          <h1>{name}</h1>
+          <p>{description}</p>
+        </Paper>
       </div>
     )
   }

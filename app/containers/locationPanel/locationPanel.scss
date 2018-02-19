@@ -1,9 +1,12 @@
 .locationPanel-container {
   position: absolute;
   z-index: 1;
-  top: 0;
-  width: 100%;
-  text-align: center;
-  padding-top: 1rem;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 
+.locationPanel-paper {
+  padding: 0.5rem 2rem;
+  text-align: center;
+  width: 15rem;
+}

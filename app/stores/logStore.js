@@ -10,6 +10,9 @@ class LogStore {
 
   @action addEntry = (entry) => {
     this.logEntries.push(entry);
+    if (this.logEntries.length > 10) {
+      this.logEntries.shift();
+    }
   };
 
   @computed get entries() {
