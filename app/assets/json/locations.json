@@ -1,6 +1,13 @@
 [
   {
     "id": 1,
+    "name": "Wasteland",
+    "description": "There's nothing here.",
+    "itemChance": {},
+    "image": "wasteland"
+  },
+  {
+    "id": 2,
     "name": "Supermarket",
     "description": "You can smell the spam already.",
     "itemChance": {
@@ -15,10 +22,10 @@
         "amount": 1
       }
     },
-    "image": ""
+    "image": "supermarket"
   },
   {
-    "id": 2,
+    "id": 3,
     "name": "Drug Store",
     "description": "There better be some medicine here!",
     "itemChance": {
@@ -28,10 +35,10 @@
         "amount": 3
       }
     },
-    "image": ""
+    "image": "pharmacie"
   },
   {
-    "id": 3,
+    "id": 4,
     "name": "Pristinely Destroyed House",
     "description": "No good for shelter, but there might be something usable here.",
     "itemChance": {
@@ -46,6 +53,6 @@
         "amount": 1
       }
     },
-    "image": ""
+    "image": "house"
   }
 ]

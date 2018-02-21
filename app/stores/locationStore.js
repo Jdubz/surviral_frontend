@@ -24,7 +24,8 @@ class LocationStore {
   @action populateLocations = () => {
     locations.forEach(loc => {
       this.allLocations.set(loc.id, new Location(loc));
-    })
+    });
+    this.setCurrentLocation(this.allLocations.get(1));
   };
   @action searchLocation = () => {
     this.currentLocation.search();

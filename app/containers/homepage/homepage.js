@@ -11,7 +11,8 @@ import LocationPanel from '../locationPanel/locationPanel';
 import LocationInventory from '../locationPanel/locationInventory';
 import TimeView from '../timeView/timeView';
 import DeathNotice from '../deathNotice/deathNotice';
-import { playerStore } from "stores";
+import { playerStore } from 'stores';
+import BGImage from '../bgImage';
 
 @observer
 class HomePage extends React.Component {
@@ -23,6 +24,7 @@ class HomePage extends React.Component {
       <div className="map-wrapper">
         <LocationPanel />
         <Log />
+        <BGImage />
       </div>
       <div className="sidePanel-wrapper">
         <TimeView />
