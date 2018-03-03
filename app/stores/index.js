@@ -15,7 +15,6 @@ const itemStore = new ItemStore();
 const actionStore = new ActionStore();
 
 itemStore.populateItems();
-locationStore.populateLocations();
 actionStore.populateBank();
 
 // actionStore.populateAvailable();

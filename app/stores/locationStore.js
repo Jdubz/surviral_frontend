@@ -7,59 +7,46 @@ import {
 import { Location } from '../models';
 import locations from 'assets/json/locations';
 
-const emptyLocation = {
-  id: 0,
-  name: 'Nowhere',
-  description: 'There\'s nothing here',
-  inventory: new Map(),
-  itemChance: {},
-  image: '',
-};
-
 class LocationStore {
-  @observable allLocations = new Map();
-  @observable currentLocation = new Location(emptyLocation);
-  @observable inventory = new Map();
+  @observable knownLocations = new Map();
+  @observable currentLocation = new Location(locations[0]);
 
-  @action populateLocations = () => {
-    locations.forEach(loc => {
-      this.allLocations.set(loc.id, new Location(loc));
-    });
-    this.setCurrentLocation(this.allLocations.get(1));
-  };
   @action searchLocation = () => {
     this.currentLocation.search();
-    this.inventory = this.currentLocation.inventory;
   };
   @action addToInventory = (item) => {
     this.currentLocation.addToInventory(item);
-    this.inventory = this.currentLocation.inventory;
   };
   @action deleteFromInventory = (itemId, qty) => {
-    const newQty = this.currentLocation.deleteFromInventory(itemId, qty);
-    this.inventory = this.currentLocation.inventory;
-    return newQty;
+    return this.currentLocation.deleteFromInventory(itemId, qty);
   };
   @action takeFromInventory = (itemId, qty) => {
-    const item = this.currentLocation.takeFromInventory(itemId, qty);
-    this.inventory = this.currentLocation.inventory;
-    return item;
+    return this.currentLocation.takeFromInventory(itemId, qty);
   };
 
   @action setCurrentLocation = (location) => {
     this.currentLocation = location;
-    this.inventory = location.inventory;
   };
-  @action newLocation = () => {
-    const newLocId = Math.ceil(Math.random() * this.allLocations.size);
+  @action explore = (search) => {
+    const roll = Math.random() * 100;
+    if (search > roll) {
+      const newLocId = Math.ceil(Math.random() * this.locations.length);
+      const newLoc = new Location(locations[newLocId]);
+      this.knownLocations.set(newLocId, newLoc);
+      this.currentLocation = newLoc;
+      return newLoc.name;
+    }
+    return 'nothing';
+  };
+  @action setLocation = () => {
     this.setCurrentLocation(this.allLocations.get(newLocId));
   };
 
-  @computed get inventoryItems() {
-    return toJS(this.inventory);
-  };
   @computed get location() {
     return toJS(this.currentLocation);
+  }
+  @computed get inventoryItems() {
+    return toJS(this.currentLocation.inventory);
   }
 }
 

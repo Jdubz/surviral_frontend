@@ -17,7 +17,7 @@ const allInventory = () => {
 };
 
 const removeFromInventories = (itemId, qty) => {
-  if (locationStore.inventoryItems[itemId]) {
+  if (locationStore.currentLocation.inventory.has(itemId)) {
     const remaining = locationStore.deleteFromInventory(itemId, qty);
     if (remaining < 0) {
       playerStore.deleteFromInventory(itemId, qty);

@@ -1,4 +1,11 @@
+import {
+  observable,
+  action,
+} from 'globalImports';
+
 class Item {
+  @observable quantity = 0;
+
   constructor(item, quantity) {
     this.id = item.id;
     this.quantity = quantity;
@@ -12,11 +19,12 @@ class Item {
   create(qty) {
     return new Item(this.baseItem, qty);
   }
-  modStack(qty) {
+
+  @action modStack = (qty) => {
     this.quantity += qty;
     return this.quantity;
   }
-  split(qty) {
+  @action split = (qty) => {
     this.quantity -= qty;
     return new Item(this.baseItem, qty);
   }
