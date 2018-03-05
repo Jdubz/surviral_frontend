@@ -1,15 +1,8 @@
 [
   {
     "id": 1,
-    "name": "Wasteland",
-    "description": "There's nothing here.",
-    "itemChance": {},
-    "image": "wasteland"
-  },
-  {
-    "id": 2,
-    "name": "Supermarket",
-    "description": "You can smell the spam already.",
+    "name": "Vault",
+    "description": "Welcome to Surviral. This is a New Game.",
     "itemChance": {
       "1": {
         "id": 1,
@@ -22,25 +15,40 @@
         "amount": 1
       }
     },
-    "image": "supermarket"
+    "image": "wasteland",
+    "events": [0, 1]
+  },
+  {
+    "id": 2,
+    "name": "River",
+    "description": "It's flowing rather fast",
+    "itemChance": {},
+    "image": "supermarket",
+    "events": [0, 2]
   },
   {
     "id": 3,
-    "name": "Drug Store",
-    "description": "There better be some medicine here!",
+    "name": "Door-Mart",
+    "description": "It's a mega super sporting goods store!",
     "itemChance": {
-      "2": {
-        "id": 2,
+      "1": {
+        "id": 1,
         "chance": 80,
         "amount": 3
+      },
+      "2": {
+        "id": 2,
+        "chance": 10,
+        "amount": 1
       }
     },
-    "image": "pharmacie"
+    "image": "pharmacie",
+    "events": [0]
   },
   {
     "id": 4,
-    "name": "Pristinely Destroyed House",
-    "description": "No good for shelter, but there might be something usable here.",
+    "name": "Sanctuary",
+    "description": "You made it to the safe spot.",
     "itemChance": {
       "1": {
         "id": 1,
@@ -53,6 +61,7 @@
         "amount": 1
       }
     },
-    "image": "house"
+    "image": "house",
+    "events": [0, 3]
   }
 ]

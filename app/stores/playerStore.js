@@ -15,6 +15,7 @@ class PlayerStore {
   @observable hunger = 100;
   @observable disease = 100;
   @observable carryingCapacity = 80;
+  @observable hasProfessor = true;
   @observable inventory = new Map();
 
   @action deathCheck() {

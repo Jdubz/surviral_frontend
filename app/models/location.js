@@ -57,10 +57,6 @@ class Location {
     });
   }
 
-  @action storyLine = () => {
-
-  }
-
   @computed get inventoryItems() {
     return toJS(this.inventory);
   }
