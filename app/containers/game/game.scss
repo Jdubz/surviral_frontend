@@ -1,0 +1,19 @@
+.game-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+
+  &__viewport {
+    flex-grow: 1;
+  }
+
+  &__location-description {
+    width: 100%;
+    background: white;
+  }
+}

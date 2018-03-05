@@ -14,26 +14,23 @@ actionStore.populateAvailable();
 class ActionPanel extends React.Component{
   render() {
     return (
-      <div className="actionPanel-container">
-        <Paper className="actionPanel-paper">
-          <Typography>Actions</Typography>
-          {Object.values(actionStore.currentActions).map((action) => {
-            return (
-              <div
-                className={'actionButton-wrapper'}
-                key={action.id}
+      <section className="actionPanel-container">
+        {Object.values(actionStore.currentActions).map((action) => {
+          return (
+            <div
+              className={'actionButton-wrapper'}
+              key={action.id}
+            >
+              <Button
+                variant="raised"
+                color="primary"
+                onClick={ () => action.execute() }
               >
-                <Button
-                  variant="raised"
-                  color="primary"
-                  onClick={ () => action.execute() }
-                >
-                  {action.name}
-                </Button>
-              </div>);
-          })}
-        </Paper>
-      </div>
+                {action.name}
+              </Button>
+            </div>);
+        })}
+      </section>
     );
   }
 }

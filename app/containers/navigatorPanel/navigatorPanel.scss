@@ -1,0 +1,20 @@
+.navigator-panel {
+  background-color: gray;
+  overflow-x: scroll;
+  display: flex;
+
+  &__locations-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    padding: 0;
+  }
+
+  &__location {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    background: white;
+  }
+}

@@ -1,14 +1,11 @@
 .actionPanel-container {
   padding: 0.3rem;
-}
-
-.actionPanel-paper {
-  padding: 0.5rem;
+  background-color: white;
 }
 
 .actionButton-wrapper {
   margin: 0.5rem 0;
-  width: 10rem;
+  width: 100%;
 }
 
 .actionButton-wrapper > * {

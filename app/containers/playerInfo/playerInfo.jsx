@@ -12,15 +12,13 @@ import { playerStore } from '../../stores';
 class PlayerInfo extends React.Component {
   render() {
     return (
-      <div className="playerInfo-container">
-        <Paper className="playerInfo-paper">
-          <Typography>Hunger</Typography>
-          <LinearProgress variant="determinate" value={playerStore.hunger} />
-          <br />
-          <Typography>Virus</Typography>
-          <LinearProgress variant="determinate" value={playerStore.disease} />
-        </Paper>
-      </div>
+      <section className="playerInfo-container">
+        <Typography>Hunger</Typography>
+        <LinearProgress variant="determinate" value={playerStore.hunger} />
+        <br />
+        <Typography>Virus</Typography>
+        <LinearProgress variant="determinate" value={playerStore.disease} />
+      </section>
     )
   }
 }

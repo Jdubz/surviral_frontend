@@ -6,9 +6,10 @@ import {
 import DevTools from 'mobx-react-devtools';
 
 // components
-import Header from 'containers/header/header';
-import MyFooter from 'containers/footer/footer';
-import HomePage from 'containers/homepage/homepage';
+// import Header from 'containers/header/header';
+// import MyFooter from 'containers/footer/footer';
+// import HomePage from 'containers/homepage/homepage';
+import Game from 'containers/game/game';
 
 // styles import. It needs to be in the project somewhere once
 import styles from 'styles/app.scss';
@@ -19,9 +20,7 @@ es6Promise.polyfill();
 
 render(
     <div className="app-container">
-      <Header />
-      <HomePage />
-      <MyFooter />
+      <Game />
       {(() => {
         if (config.appEnv === 'dev') {
           return <DevTools />;

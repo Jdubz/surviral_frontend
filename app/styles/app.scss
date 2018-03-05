@@ -63,15 +63,13 @@ a {
 /////////////////////
 // Components
 
-@import '../containers/bgImage/bgImage';
 @import '../containers/locationPanel/locationInventory';
 @import '../containers/locationPanel/locationPanel';
 @import '../containers/playerInfo/playerInventory';
 @import '../containers/timeView/timeView';
 @import '../containers/actionPanel/actionPanel';
-@import '../containers/header/header';
-@import '../containers/homepage/homepage';
-@import '../containers/footer/footer';
+@import '../containers/game/game';
+@import '../containers/navigatorPanel/navigatorPanel';
 @import '../containers/playerInfo/playerInfo';
 @import '../containers/log/log';
 @import '../containers/deathNotice/deathNotice';
