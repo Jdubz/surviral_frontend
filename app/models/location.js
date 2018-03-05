@@ -16,6 +16,7 @@ const qty = (amount) => {
 
 class Location {
   @observable inventory = new Map();
+  @observable searchesLeft = 100;
 
   constructor(location) {
     this.id = location.id;
@@ -50,10 +51,14 @@ class Location {
   @action search = () => {
     Object.values(this.itemChance).forEach(item => {
       if (roll(item.chance)) {
-        const newItem = new Item(itemStore.getItem(item.id), qty(item.quantity));
+        const newItem = new Item(itemStore.getItem(item.id), qty(item.amount));
         this.addToInventory(newItem);
       }
     });
+  }
+
+  @action storyLine = () => {
+
   }
 
   @computed get inventoryItems() {

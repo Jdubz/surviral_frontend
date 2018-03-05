@@ -32,7 +32,7 @@ const addToInventory = (itemId, qty) => {
 };
 
 const locationMods = {
-  new: () => locationStore.newLocation(),
+  new: () => locationStore.explore(50),
   search: () => locationStore.searchLocation(),
 };
 

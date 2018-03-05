@@ -30,16 +30,15 @@ class LocationStore {
   @action explore = (search) => {
     const roll = Math.random() * 100;
     if (search > roll) {
-      const newLocId = Math.ceil(Math.random() * this.locations.length);
+      const newLocId = Math.ceil(Math.random() * (locations.length - 1));
       const newLoc = new Location(locations[newLocId]);
       this.knownLocations.set(newLocId, newLoc);
       this.currentLocation = newLoc;
       return newLoc.name;
+    } else {
+      this.currentLocation = new Location(locations[0]);
+      return 'nothing';
     }
-    return 'nothing';
-  };
-  @action setLocation = () => {
-    this.setCurrentLocation(this.allLocations.get(newLocId));
   };
 
   @computed get location() {
