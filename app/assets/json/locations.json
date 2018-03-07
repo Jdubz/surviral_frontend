@@ -3,52 +3,60 @@
     "id": 1,
     "name": "Vault",
     "description": "Welcome to Surviral. This is a New Game.",
+    "searches": 70,
     "itemChance": {
       "1": {
         "id": 1,
-        "chance": 80,
-        "amount": 5
+        "chance": 20,
+        "amount": 2
       },
       "2": {
         "id": 2,
-        "chance": 10,
+        "chance": 5,
         "amount": 1
       }
     },
-    "image": "wasteland",
-    "events": [0, 1]
+    "image": "wasteland"
   },
   {
     "id": 2,
     "name": "River",
     "description": "It's flowing rather fast",
+    "searches": 0,
     "itemChance": {},
     "image": "supermarket",
-    "events": [0, 2]
+    "event_requirements": true,
+    "events": [1, 2]
   },
   {
     "id": 3,
     "name": "Door-Mart",
-    "description": "It's a mega super sporting goods store!",
+    "description": "It's a mega sporting goods store!",
+    "searches": 100,
     "itemChance": {
       "1": {
         "id": 1,
-        "chance": 80,
-        "amount": 3
+        "chance": 10,
+        "amount": 1
       },
       "2": {
         "id": 2,
-        "chance": 10,
+        "chance": 2,
+        "amount": 1
+      },
+      "3": {
+        "id": 3,
+        "chance": 5,
         "amount": 1
       }
     },
-    "image": "pharmacie",
-    "events": [0]
+    "image": "pharmacie"
   },
   {
     "id": 4,
     "name": "Sanctuary",
     "description": "You made it to the safe spot.",
+    "searches": 50,
     "itemChance": {
       "1": {
         "id": 1,
@@ -62,6 +70,41 @@
       }
     },
     "image": "house",
-    "events": [0, 3]
+    "events": [3,4,5]
+  },
+  {
+    "id": 5,
+    "name": "Supermarket",
+    "description": "There's definitely food here",
+    "searches": 70,
+    "itemChance": {
+      "1": {
+        "id": 1,
+        "chance": 70,
+        "amount": 3
+      }
+    },
+    "image": "supermarket"
+  },
+  {
+    "id": 6,
+    "name": "Pharmacy",
+    "description": "Hopefully there's meds here still",
+    "searches": 30,
+    "itemChance": {
+      "2": {
+        "id": 2,
+        "chance": 30,
+        "amount": 2
+      }
+    },
+    "image": "pharmacie"
+  },
+  {
+    "id": 7,
+    "name": "Wasteland",
+    "description": "There's nothing of value here",
+    "searches": 0,
+    "image": "wasteland"
   }
 ]

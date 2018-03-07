@@ -1,27 +1,10 @@
-// @import '../../node_modules/grommet/scss/vanilla/index';
-
-/////////////
-// Animal Labs Colors
-/////////////
-
-$AL-yellow: #ffe52d;
-$AL-ltblue: #27ffdb;
-$AL-blue: #6281ff;
-$AL-ltpurple: #e27aff;
-$AL-purple: #9f62ff;
-$AL-bg: #fbfaff;
-$AL-cardbg: #ececec;
-
 /////////////
 // Global css
 /////////////
 
-@import url('https://rsms.me/inter/inter-ui.css');
-
 body, html {
   font-size: 19px;
-  font-family: 'Inter UI', sans-serif;
-  background-color: $AL-bg;
+  background-color: white;
   margin: 0;
   padding: 0;
 }

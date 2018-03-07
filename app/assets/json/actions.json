@@ -24,9 +24,9 @@
   {
     "id": 2,
     "name": "Search",
-    "prereq": {},
+    "prereq": { "location": "searches" },
     "modifiers": { "location": "search" },
-    "time": 1,
+    "time": 3,
     "logs": "you look around for anything useful",
     "sound_effect": 0
   },
@@ -55,10 +55,28 @@
   {
     "id": 4,
     "name": "Explore",
-    "prereq": {},
-    "modifiers": { "location": "new" },
+    "prereq": { "location": 7 },
+    "modifiers": { "location": "explore" },
     "time": 3,
-    "logs": "You set off looking for new digs",
+    "logs": "Check out the area",
     "sound_effect": 0
+  },
+  {
+    "id": 5,
+    "name": "Move Forward",
+    "prereg": { "location": "requirements_ met" },
+    "modifiers": { "travel": { "direction": "forward" }},
+    "time": "travel",
+    "logs": "Set off towards the safe haven",
+    "sound_effect": 1
+  },
+  {
+    "id": 6,
+    "name": "Move Backwards",
+    "prereq": { "location": "not-start" },
+    "modifiers": { "travel": { "direction": "back" }},
+    "time": "travel",
+    "logs": "Two steps forward one step back",
+    "sound_effect": 1
   }
 ]

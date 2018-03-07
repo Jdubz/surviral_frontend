@@ -31,8 +31,21 @@ const addToInventory = (itemId, qty) => {
   playerStore.addToInventory(itemStore.getItem(itemId).create(qty));
 };
 
+const parseLocReq = (req) => {
+  if (req === 'searches') {
+    return locationStore.currentLocation.searchesLeft > 0;
+  }
+  if (req === "requirements_met") {
+    return !locationStore.currentLocation.blocked;
+  }
+  if (req === "not-start") {
+    return !(locationStore.currentLocation.id === 1);
+  }
+  return locationStore.currentLocation === req;
+};
+
 const locationMods = {
-  new: () => locationStore.explore(50),
+  explore: () => locationStore.explore(50),
   search: () => locationStore.searchLocation(),
 };
 
@@ -63,12 +76,17 @@ class Action {
 
   checkRequirements() {
     const items = allInventory();
+    let itemCheck = true;
+    let locationCheck = true;
     if (this.prereq.items) {
-      return Object.values(this.prereq.items).reduce((accum, current) => {
+      itemCheck = Object.values(this.prereq.items).reduce((accum, current) => {
         return (items[current.id] && items[current.id] >= current.quantity) && accum;
       }, true);
     }
-    return true;
+    if (this.prereq.location) {
+      locationCheck = parseLocReq(this.prereq.location);
+    }
+    return itemCheck && locationCheck;
   }
 
   execute() {

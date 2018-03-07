@@ -16,6 +16,7 @@ const actionStore = new ActionStore();
 
 itemStore.populateItems();
 actionStore.populateBank();
+locationStore.populateStory();
 
 // actionStore.populateAvailable();
 // ToDO: this is done in actionPanel due to execution order, should be done here

@@ -1,0 +1,49 @@
+{
+  "1": {
+    "id": 1,
+    "name": "Swim across",
+    "prereq": {},
+    "modifiers": {
+      "player": { "professor": false },
+      "location": { "professor": true },
+      "travel": { "direction": "forward" }
+    },
+    "time": "travel",
+    "logs": "You swim across the river, taking only what you can carry",
+    "sound_effect": 0
+  },
+  "2": {
+    "id": 2,
+    "name": "Use boat",
+    "prereq": {
+      "items": {
+        "3": { "id": 3 }
+      }
+    },
+    "modifiers": {
+      "travel": {
+        "direction": "forward",
+        "travel_requirements": true
+      }
+    },
+    "time": "travel",
+    "logs": "You are able to carry the professor across the river with you in the boat",
+    "sound_effect": 0
+  },
+  "4": {
+    "id": 4,
+    "name": "Bad ending",
+    "prereq": { "professor": false },
+    "modifiers": { "game_end": "bad" },
+    "logs": "you survived but were unable to save the professor",
+    "sound_effect": 0
+  },
+  "5": {
+    "id": 5,
+    "name": "Good ending",
+    "prereq": { "professor": true },
+    "modifiers": { "game_end": "good" },
+    "logs": "You were able to survive AND save the professor!",
+    "sound_effect": 0
+  }
+}

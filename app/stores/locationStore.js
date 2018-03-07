@@ -6,22 +6,29 @@ import {
 } from 'globalImports';
 import { Location } from '../models';
 import locations from 'assets/json/locations';
+import story from 'assets/json/storyMap';
 
 class LocationStore {
-  @observable knownLocations = new Map();
-  @observable currentLocation = new Location(locations[0]);
+  @observable locationMap = new Map();
+  @observable currentLocation = 0;
 
+  @action populateStory = () => {
+    story.forEach((loc, i) => {
+      console.log(loc, i)
+      this.locationMap.set(i, new Location(locations[loc]));
+    });
+  };
   @action searchLocation = () => {
-    this.currentLocation.search();
+    this.locationMap.get(this.currentLocation).search();
   };
   @action addToInventory = (item) => {
-    this.currentLocation.addToInventory(item);
+    this.locationMap.get(this.currentLocation).addToInventory(item);
   };
   @action deleteFromInventory = (itemId, qty) => {
-    return this.currentLocation.deleteFromInventory(itemId, qty);
+    return this.locationMap.get(this.currentLocation).deleteFromInventory(itemId, qty);
   };
   @action takeFromInventory = (itemId, qty) => {
-    return this.currentLocation.takeFromInventory(itemId, qty);
+    return this.locationMap.get(this.currentLocation).takeFromInventory(itemId, qty);
   };
 
   @action setCurrentLocation = (location) => {
@@ -30,22 +37,19 @@ class LocationStore {
   @action explore = (search) => {
     const roll = Math.random() * 100;
     if (search > roll) {
-      const newLocId = Math.ceil(Math.random() * (locations.length - 1));
+      const newLocId = Math.round(Math.random()) + 5;
       const newLoc = new Location(locations[newLocId]);
-      this.knownLocations.set(newLocId, newLoc);
-      this.currentLocation = newLoc;
+      this.locationMap.set(this.currentLocation, newLoc);
       return newLoc.name;
-    } else {
-      this.currentLocation = new Location(locations[0]);
-      return 'nothing';
     }
+    return 'nothing';
   };
 
   @computed get location() {
-    return toJS(this.currentLocation);
+    return toJS(this.locationMap.get(this.currentLocation));
   }
   @computed get inventoryItems() {
-    return toJS(this.currentLocation.inventory);
+    return toJS(this.locationMap.get(this.currentLocation).inventory);
   }
 }
 

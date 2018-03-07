@@ -8,9 +8,16 @@
   },
   {
     "id": 2,
-    "name": "medicine",
+    "name": "Medicine",
     "description": "fights disease",
     "weight": 0.5,
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "Boat",
+    "description": "keeps you out of the water",
+    "weight": 20,
     "image": ""
   }
 ]
