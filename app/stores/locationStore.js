@@ -36,7 +36,8 @@ class LocationStore {
   @action explore = (search) => {
     const roll = Math.random() * 100;
     if (search > roll) {
-      const newLocId = Math.round(Math.random()) + 5;
+      const newLocId = Math.round(Math.random()) + 4;
+      console.log(newLocId)
       const newLoc = new Location(locations[newLocId]);
       this.locationMap.set(this.currentLocation, newLoc);
       return newLoc.name;

@@ -4,14 +4,16 @@ import {
 } from 'globalImports';
 import images from 'assets/images';
 import { locationStore } from 'stores';
+import InventoryPanel from '../inventoryPanel';
 
 @observer
 class BGImage extends React.Component {
   render() {
     return (
-      <div className={'bgImage-container'}>
+      <section className={'bgImage-container'}>
         <img src={images[locationStore.location.image]} />
-      </div>
+        <InventoryPanel/>
+      </section>
     )
   }
 }

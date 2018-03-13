@@ -1,6 +1,6 @@
 import {
     React,
-    observer
+    observer,
 } from 'globalImports';
 
 import PlayerInfo from '../playerInfo/playerInfo';

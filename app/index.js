@@ -4,11 +4,6 @@ import {
   es6Promise,
 } from 'globalImports';
 import DevTools from 'mobx-react-devtools';
-
-// components
-// import Header from 'containers/header/header';
-// import MyFooter from 'containers/footer/footer';
-// import HomePage from 'containers/homepage/homepage';
 import Game from 'containers/game/game';
 
 // styles import. It needs to be in the project somewhere once

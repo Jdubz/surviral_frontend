@@ -3,11 +3,13 @@ import {
   action,
   toJS,
 } from 'globalImports';
+
 import { Item } from 'models';
 import items from 'assets/json/items';
 
 class ItemStore {
   @observable allItems = new Map();
+  @observable inventoryOpen = false;
 
   @action populateItems = () => {
     items.forEach(item => {
