@@ -1,5 +1,8 @@
 .playerInventory-container {
   padding: 0.3rem;
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
 }
 
 .playerInventory-paper {
@@ -8,6 +11,7 @@
 
 .itemCard-container {
   width: 100%;
+  background: white;
 }
 
 .itemCard-btn {
