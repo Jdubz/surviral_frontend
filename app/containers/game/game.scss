@@ -8,10 +8,6 @@
   display: flex;
   flex-direction: column;
 
-  &__viewport {
-    flex-grow: 1;
-  }
-
   &__location-description {
     width: 100%;
     background: white;

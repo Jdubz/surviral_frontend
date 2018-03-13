@@ -7,10 +7,10 @@ import PlayerInfo from '../playerInfo/playerInfo';
 import ActionPanel from '../actionPanel/actionPanel';
 import DeathNotice from '../deathNotice/deathNotice';
 import NavigatorPanel from '../navigatorPanel/navigatorPanel';
+import BgImage from '../bgImage';
 
 import { playerStore } from 'stores';
 import { locationStore } from 'stores';
-import images from 'assets/images';
 
 @observer
 class Game extends React.Component {
@@ -19,9 +19,9 @@ class Game extends React.Component {
       return <DeathNotice />
     }
     return (
-      <div className="game-container" style={{backgroundImage: `url('${images[locationStore.location.image]}')`}}>
+      <div className="game-container" >
         <PlayerInfo />
-        <div className="game-container__viewport"></div>
+        <BgImage />
         <div className="game-container__location-description">
           {locationStore.location.description}
         </div>

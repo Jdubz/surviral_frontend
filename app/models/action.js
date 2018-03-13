@@ -17,7 +17,7 @@ const allInventory = () => {
 };
 
 const removeFromInventories = (itemId, qty) => {
-  if (locationStore.currentLocation.inventory.has(itemId)) {
+  if (locationStore.location.inventory.has(itemId)) {
     const remaining = locationStore.deleteFromInventory(itemId, qty);
     if (remaining < 0) {
       playerStore.deleteFromInventory(itemId, qty);
@@ -33,15 +33,15 @@ const addToInventory = (itemId, qty) => {
 
 const parseLocReq = (req) => {
   if (req === 'searches') {
-    return locationStore.currentLocation.searchesLeft > 0;
+    return locationStore.location.searchesLeft > 0;
   }
   if (req === "requirements_met") {
-    return !locationStore.currentLocation.blocked;
+    return !locationStore.location.blocked;
   }
   if (req === "not-start") {
-    return !(locationStore.currentLocation.id === 1);
+    return !(locationStore.currentLocation === 0);
   }
-  return locationStore.currentLocation === req;
+  return locationStore.location.id === req;
 };
 
 const locationMods = {
@@ -61,6 +61,16 @@ const mods = {
   },
   player: (player) => playerStore.modPlayer(player),
   location: (loc) => locationMods[loc](),
+  travel: (travel) => {
+    if (travel.requirements_met) {
+      locationStore.location.blocked = travel.requirements_met;
+    }
+    if (travel.direction === 'forward') {
+      locationStore.currentLocation += 1;
+    } else if (travel.direction === 'back') {
+      locationStore.currentLocation -= 1;
+    }
+  },
 };
 
 class Action {

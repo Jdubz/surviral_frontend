@@ -24,6 +24,8 @@ class Location {
     this.description = location.description;
     this.itemChance = location.itemChance;
     this.image = location.image;
+    this.blocked = location.event_requirements || false;
+    this.searchesLeft = location.searches;
   }
 
   @action addToInventory = (item) => {

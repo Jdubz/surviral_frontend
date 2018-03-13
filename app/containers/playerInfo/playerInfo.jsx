@@ -3,7 +3,6 @@ import {
   observer,
 } from 'globalImports';
 
-import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import { LinearProgress } from 'material-ui/Progress';
 import { playerStore } from '../../stores';

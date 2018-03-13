@@ -14,7 +14,6 @@ class LocationStore {
 
   @action populateStory = () => {
     story.forEach((loc, i) => {
-      console.log(loc, i)
       this.locationMap.set(i, new Location(locations[loc]));
     });
   };
